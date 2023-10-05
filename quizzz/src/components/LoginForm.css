@@ -3,7 +3,7 @@
     text
 } */
 .container {
-    max-width: 350px;
+    max-width: 400px;
     margin: 200px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -32,11 +32,11 @@
     background-color: rgb(232, 236, 239);
   }
   
-  .label {
+  label {
     font-weight: bold;
   }
   
-  .input {
+  input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 7px;
@@ -50,4 +50,3 @@
     padding: 10px;
     cursor: pointer;
   }
-  
