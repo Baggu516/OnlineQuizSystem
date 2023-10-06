@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const PracticeTimer = () => {
   const [time, setTime] = useState(180);
-  const [timer,setTimer]=useState(null)
+  const [timer, setTimer] = useState(null);
 
   const ref = useRef(null);
 
@@ -15,18 +15,17 @@ const PracticeTimer = () => {
     clearInterval(ref.current);
   };
   useEffect(() => {
-    
-    console.log("effect")
-    const a=setInterval(() => {
-        // setTime((prev) => prev + 1);
-        setTime((prev)=>prev-1)
-      }, 1000);
+    console.log("effect");
+    const a = setInterval(() => {
+      // setTime((prev) => prev + 1);
+      setTime((prev) => prev - 1);
+    }, 1000);
 
-      return () => {
-        clearInterval(a);
-      };
+    return () => {
+      clearInterval(a);
+    };
   }, []);
-//   console.log("time");
+  //   console.log("time");
   return (
     <div>
       <p>Time : {time}</p>
