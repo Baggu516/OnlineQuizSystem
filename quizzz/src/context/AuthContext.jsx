@@ -5,7 +5,7 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   let ContextData = {
-    user: null,
+    user: "Bhargav",
   };
 
   return (

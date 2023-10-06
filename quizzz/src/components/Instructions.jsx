@@ -1,11 +1,12 @@
-import React from 'react';
-import "./Instructions.css"
+import React from "react";
+import "./Instructions.css";
 
-function Instructions() {
- 
+function Instructions({ closeModal }) {
   return (
     <div className="instructions">
-      <h1>Quiz Instructions</h1>
+      <h1>
+        Quiz Instructions <button onClick={closeModal}>X close</button>
+      </h1>
       <p>
         Welcome to the quiz! Please read the following instructions carefully
         before you start:
