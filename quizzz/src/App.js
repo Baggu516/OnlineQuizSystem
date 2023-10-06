@@ -9,12 +9,19 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Index from "./components/Index";
 import Error from "./components/Error";
 import RedirectRoute from "./utils/RedirectRoute";
+import Timer from "./components/Timer";
+import PracticeTimer from "./components/PracticeTimer";
+import Instructions from "./components/Instructions";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
+      {/* <PracticeTimer/> */}
+      <Instructions/>
+      
       <BrowserRouter>
+      <Timer/>
         <Routes>
           <Route
             path="/"
