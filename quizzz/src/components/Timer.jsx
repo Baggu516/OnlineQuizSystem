@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 // import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Timer.css"
-function Timer() {
+function  Timer() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(4);
   const [seconds, setSeconds] = useState(7);
@@ -26,7 +26,7 @@ function Timer() {
   const ref = useRef();
   useEffect(() => {
     console.log("timer");
-    if (true) {
+    // if (true) {
       ref.current = setInterval(() => {
         console.log(ref, "timer");
         if (seconds === 0) {
@@ -47,10 +47,10 @@ function Timer() {
           setSeconds((prevSeconds) => prevSeconds - 1);
         }
       }, 1000);
-    } else {
-      clearInterval(ref.current);
+    // } else {
+      // clearInterval(ref.current);
       //   console.log()
-    }
+    // }
     return () => {
       clearInterval(ref.current);
     };
