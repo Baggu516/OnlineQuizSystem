@@ -16,6 +16,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      {/* <Quiz/> */}
+
         <Routes>
           <Route
             path="/"

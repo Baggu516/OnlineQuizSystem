@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 // import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-function Timer() {
+import "./Timer.css"
+function  Timer() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(4);
   const [seconds, setSeconds] = useState(7);
@@ -26,7 +26,7 @@ function Timer() {
   const ref = useRef();
   useEffect(() => {
     console.log("timer");
-    if (isRunning) {
+    // if (true) {
       ref.current = setInterval(() => {
         console.log(ref, "timer");
         if (seconds === 0) {
@@ -47,10 +47,10 @@ function Timer() {
           setSeconds((prevSeconds) => prevSeconds - 1);
         }
       }, 1000);
-    } else {
-      clearInterval(ref.current);
+    // } else {
+      // clearInterval(ref.current);
       //   console.log()
-    }
+    // }
     return () => {
       clearInterval(ref.current);
     };
@@ -58,13 +58,13 @@ function Timer() {
   console.log(ref, "timer outside");
   return (
     <div className="stopwatch">
-      <h1>Stopwatch Timer</h1>
+      {/* <h1>Stopwatch Timer</h1> */}
       <div className="timer">
         <span>{hours < 10 ? `0${hours}` : hours}</span>:
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
       </div>
-      <div className="buttons">
+      {/* <div className="buttons">
         <button onClick={startTimer} disabled={isRunning}>
           Start
         </button>
@@ -72,7 +72,7 @@ function Timer() {
           Stop
         </button>
         <button onClick={resetTimer}>Reset</button>
-      </div>
+      </div> */}
     </div>
   );
 }

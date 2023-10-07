@@ -3,9 +3,15 @@ import "./Instructions.css";
 
 function Instructions({ closeModal }) {
   return (
+    <div >
+    <div className="close-button">
+    <button onClick={closeModal}>
+    <ion-icon name="close-outline"></ion-icon>
+    </button>
+    </div>
     <div className="instructions">
       <h1>
-        Quiz Instructions <button onClick={closeModal}>X close</button>
+        Quiz Instructions 
       </h1>
       <p>
         Welcome to the quiz! Please read the following instructions carefully
@@ -21,6 +27,8 @@ function Instructions({ closeModal }) {
       </ol>
       <p>Good luck, and have fun!</p>
     </div>
+    </div>
+    
   );
 }
 
