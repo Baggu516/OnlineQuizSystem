@@ -1,11 +1,16 @@
-.timer{
-    background-color: rgb(36, 25, 241);
-    padding: 2px;
+/* .timer{
+    background-color: rgb(249, 12, 44);
+    padding: 3px;
     padding-left: 5px;
     padding-right: 5px;
     color: azure;
     width: 100px;
     font-size:large;
-    /* position: fixed; */
+    position: fixed;
 
+} */
+.timer-btn{
+   
+    width: 150px;
+    font-size: 200px;
 }
