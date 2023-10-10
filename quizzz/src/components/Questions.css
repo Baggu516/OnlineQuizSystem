@@ -1,0 +1,10 @@
+.options-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 200px;
+
+}
+.question{
+    padding: 2px;
+}

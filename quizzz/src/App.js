@@ -10,6 +10,7 @@ import Index from "./components/Index";
 import Error from "./components/Error";
 import RedirectRoute from "./utils/RedirectRoute";
 import Quiz from "./components/Quiz";
+import Instructions from "./components/Instructions";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -40,6 +41,14 @@ function App() {
             element={
               <RedirectRoute>
                 <RegistrationForm />
+              </RedirectRoute>
+            }
+          />
+            <Route
+            path="instructions"
+            element={
+              <RedirectRoute>
+                <Instructions/>
               </RedirectRoute>
             }
           />

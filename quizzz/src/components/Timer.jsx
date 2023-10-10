@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 // import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Timer.css"
+import { Button } from "@mui/material";
 function  Timer() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(4);
@@ -59,11 +60,13 @@ function  Timer() {
   return (
     <div className="stopwatch">
       {/* <h1>Stopwatch Timer</h1> */}
-      <div className="timer">
+      {/* <div className="timer"> */}
+        <Button variant="contained" color="error" size="large" className="timer-btn" >
         <span>{hours < 10 ? `0${hours}` : hours}</span>:
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-      </div>
+        </Button>
+      {/* </div> */}
       {/* <div className="buttons">
         <button onClick={startTimer} disabled={isRunning}>
           Start
