@@ -20,21 +20,6 @@ const Quiz = () => {
   // changing question number state(n)
   const [n, setN] = useState(0);
   // options functions to set options
-<<<<<<< Updated upstream
-  const option1 = () => {
-    console.log("option1");
-  };
-  const option2 = () => {
-    console.log("option2");
-  };
-  const option3 = () => {
-    console.log("option3");
-  };
-  // handling section functions to render particular section questions
-  const handleSecA = () => {};
-  const handleSecB = () => {};
-  const handleSecC = () => {};
-=======
 
   const option1=()=>{
   console.log("option1")
@@ -114,7 +99,6 @@ useEffect(()=>{
   // }
 },[n])
 
->>>>>>> Stashed changes
   return (
     <>
       <div className="quiz">
@@ -196,8 +180,6 @@ useEffect(()=>{
         </Modal>
         {/* <Timer /> */}
       </div>
-<<<<<<< Updated upstream
-=======
     
       <div className="sections-container">
         <Button  variant="contained" className="section-btn" onClick={handleSecA} disabled={secdisable[0]}>section-A</Button>
@@ -246,9 +228,7 @@ useEffect(()=>{
         <Instructions closeModal={closeModal} />
       </Modal>
       {/* <Timer /> */}
-    </div>
     
->>>>>>> Stashed changes
     </>
   );
 };
