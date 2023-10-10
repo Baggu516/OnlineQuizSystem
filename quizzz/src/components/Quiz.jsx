@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import "./Quiz.css";
 // material ui
 // import Divider
-import Divider from "@mui/material/Divider";
+import Divider from '@mui/material/Divider';
 import { Button } from "@mui/material";
 // importing question component
 import Questions from "./Questions";
@@ -18,7 +18,7 @@ const Quiz = () => {
   const closeModal = () => setModalOpen(false);
   const openModal = () => setModalOpen(true);
   // changing question number state(n)
-  const [n, setN] = useState(0);
+  const [n,setN]=useState(0)
   // options functions to set options
 
   const option1=()=>{
@@ -99,86 +99,12 @@ useEffect(()=>{
   // }
 },[n])
 
-  return (
+  return 
+  (
     <>
-      <div className="quiz">
-        <div className="quiz-heading">
-          This is quizz page where actuall quiz {id} goes!!
-        </div>
-
-        <div className="sections-container">
-          <Button
-            variant="contained"
-            className="section-btn"
-            onClick={handleSecA}
-          >
-            section-A
-          </Button>
-          <Button
-            variant="contained"
-            className="section-btn"
-            onClick={handleSecB}
-          >
-            section-B
-          </Button>
-          <Button
-            variant="contained"
-            className="section-btn"
-            onClick={handleSecB}
-          >
-            section-c
-          </Button>
-          <Divider />
-        </div>
-
-        <div className="time-instruction">
-          <Button
-            variant="contained"
-            color="warning"
-            className="Instruction-btn"
-            onClick={openModal}
-          >
-            view Instructions
-          </Button>
-
-          <Timer />
-        </div>
-        {/* ************************************************************questions********************************************/}
-        <div className="question-container">
-          <Questions
-            n={n}
-            option1={option1}
-            option2={option2}
-            option3={option3}
-          />
-        </div>
-        {/* *******************************************************************************************8 */}
-        {/* <hr></hr> */}
-        <div className="nav-btn">
-          <div className="clear-mark-btn">
-            <Button variant="contained">Clear</Button>
-            <Button variant="contained">Mark up</Button>
-          </div>
-          <div className="save-next-btn">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => setN(n + 1)}
-            >
-              Save and next
-            </Button>
-          </div>
-        </div>
-        <div className="submit-btn">
-          <Button variant="contained" style={{ backgroundColor: "blue" }}>
-            Submit
-          </Button>
-        </div>
-
-        <Modal isOpen={modalOpen}>
-          <Instructions closeModal={closeModal} isModal={false} />
-        </Modal>
-        {/* <Timer /> */}
+    <div className="quiz">
+      <div className="quiz-heading">
+      This is quizz page where actuall quiz {id} goes!!
       </div>
     
       <div className="sections-container">
@@ -230,7 +156,7 @@ useEffect(()=>{
       {/* <Timer /> */}
     
     </>
-  );
+  )
 };
 
 export default Quiz;
