@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {/* <Quiz/> */}
+        {/* <Quiz/> */}
 
         <Routes>
           <Route
@@ -44,12 +44,12 @@ function App() {
               </RedirectRoute>
             }
           />
-            <Route
+          <Route
             path="instructions"
             element={
-              <RedirectRoute>
-                <Instructions/>
-              </RedirectRoute>
+              <PrivateRoute>
+                <Instructions isModal={false} />
+              </PrivateRoute>
             }
           />
           <Route path="quiz/:id" element={<Quiz />} />
