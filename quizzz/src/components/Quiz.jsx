@@ -154,9 +154,9 @@ useEffect(()=>{
         <Instructions closeModal={closeModal} />
       </Modal>
       {/* <Timer /> */}
-    
-    </>
-  )
-};
+    </div>
+  </>
+  );
+}
 
 export default Quiz;
