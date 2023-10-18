@@ -83,6 +83,9 @@ const [optionStore,setOptionStore]=useState({
        }
   setDisvalue(tem)
   setOption(optionStore.A[0])
+  }else{
+    setDisvalue("")
+    setOption("")
   }
   };
   const handleSecB = () => {
@@ -108,6 +111,9 @@ const [optionStore,setOptionStore]=useState({
          }
     setDisvalue(tem)
     setOption(optionStore.B[0])
+    }else{
+      setDisvalue("")
+      setOption("")
     }
   };
   const handleSecC = () => {
@@ -133,6 +139,9 @@ const [optionStore,setOptionStore]=useState({
        }
   setDisvalue(tem)
   setOption(optionStore.C[0])
+  }else{
+    setDisvalue("")
+    setOption("")
   }
   };
 
@@ -223,6 +232,53 @@ const [optionStore,setOptionStore]=useState({
     setOption(optionStore[s][n - 1]);
       }
   console.log(optionStore,"allllseeeections")
+  // handle clear func is used to clear the selected option
+  const HandleClear=()=>{
+      if(optionStore[s][n]){
+        setDisvalue("")
+        setOption("")
+        let temp=[...optionStore[s]]
+        temp.splice(n,1,"")
+        setOptionStore({...optionStore,[s]:[...temp]})
+      }
+  }
+  // mark up state
+  const [markStore,setMarkStore]=useState({
+    "A":[],
+  "B":[],
+  "C":[]
+  })
+  const HandleMark=()=>{
+    // let t=[...markStore]
+    // setMarkStore({...markStore,[s]:[...]})
+  }
+  // handle increment button 
+  const HandleNButtons=(index)=>{
+    setN(index)
+    if(optionStore[s][index]){
+      let temp;
+      switch(optionStore[s][index]){
+                  case "a":
+                    temp = 0;
+                    break;
+                  case "b":
+                    temp = 1;
+                    break;
+                  case "c":
+                    temp = 2;
+                    break;
+                  default:
+                    // text=2
+                    console.log("defaulttttttttttttttttttttttttttttttttttttt");
+    }
+    setDisvalue(temp)
+    setOption(optionStore[s][index]);
+    }
+    else{
+      setDisvalue("")
+      setOption("")
+    }
+  }
 
   useEffect(() => {
     console.log(n, "useEffecttttttttttttttttt");
@@ -299,21 +355,29 @@ const [optionStore,setOptionStore]=useState({
           <Divider />
           <div className="numbers">
             {Data[`section${s}`].map((item, index) => (
-            <button
+            (optionStore[s][index]==undefined || optionStore[s][index]=="")?<button
                 className="number-btn"
                 key={index}
-                onClick={() => setN(index)}
+                onClick={() => HandleNButtons(index)}
               >
                 {index + 1}
-              </button>
+              </button>:
+              <button
+              className="number-btn1"
+              key={index}
+              onClick={()=>HandleNButtons(index)}
+            >
+              {index + 1}
+            </button>
+
             ))}
           </div>
         </div>
         {/* <hr></hr> */}
         <div className="nav-btn">
           <div className="clear-mark-btn">
-            <Button variant="contained">Clear</Button>
-            <Button variant="contained">Mark up</Button>
+            <Button variant="contained" onClick={HandleClear}>Clear</Button>
+            <Button variant="contained" onClick={HandleMark}>Mark up</Button>
           </div>
           <div className="save-next-btn">
             {Data[`section${s}`].length - 1 !== n ? (
