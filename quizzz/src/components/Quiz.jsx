@@ -65,18 +65,75 @@ const [optionStore,setOptionStore]=useState({
     setN(0);
     setSecDisable([true, false, false]);
     setGoNextText("Go To Next section");
+    if(optionStore.A[0]){
+      let tem;
+      switch(optionStore.A[0]){
+        case "a":
+          tem = 0;
+          break;
+        case "b":
+          tem = 1;
+          break;
+        case "c":
+          tem = 2;
+          break;
+        default:
+          // text=2
+          console.log("defaulttttttttttttttttttttttttttttttttttttt");
+       }
+  setDisvalue(tem)
+  setOption(optionStore.A[0])
+  }
   };
   const handleSecB = () => {
     setS("B");
     setN(0);
     setSecDisable([false, true, false]);
     setGoNextText("Go To Next section");
+    if(optionStore.B[0]){
+        let tem;
+        switch(optionStore.B[0]){
+          case "a":
+            tem = 0;
+            break;
+          case "b":
+            tem = 1;
+            break;
+          case "c":
+            tem = 2;
+            break;
+          default:
+            // text=2
+            console.log("defaulttttttttttttttttttttttttttttttttttttt");
+         }
+    setDisvalue(tem)
+    setOption(optionStore.B[0])
+    }
   };
   const handleSecC = () => {
     setS("C");
     setN(0);
     setSecDisable([false, false, true]);
     setGoNextText("Go to Back-Section or Submit");
+    if(optionStore.C[0]){
+      let tem;
+      switch(optionStore.C[0]){
+        case "a":
+          tem = 0;
+          break;
+        case "b":
+          tem = 1;
+          break;
+        case "c":
+          tem = 2;
+          break;
+        default:
+          // text=2
+          console.log("defaulttttttttttttttttttttttttttttttttttttt");
+       }
+  setDisvalue(tem)
+  setOption(optionStore.C[0])
+  }
   };
 
   // going to next section whenever we are end of the section
@@ -242,7 +299,7 @@ const [optionStore,setOptionStore]=useState({
           <Divider />
           <div className="numbers">
             {Data[`section${s}`].map((item, index) => (
-              <button
+            <button
                 className="number-btn"
                 key={index}
                 onClick={() => setN(index)}
