@@ -80,6 +80,7 @@
      display: flex;
     justify-content: center;
     align-items: center;
+    gap:30px;
 }
 .nav-btn{
     grid-area:4/1/4/1;
