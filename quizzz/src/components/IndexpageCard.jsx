@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
-export default function IndexpageCard() {
+export default function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 1000,height:600 }}>
+    <Card sx={{ width: 300, height: 275 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="./images.jpg"
+          image="https://headsupfortails.com/cdn/shop/articles/Cat_s_Mind.jpg?v=1624444348"
           alt="green iguana"
         />
         <CardContent>
