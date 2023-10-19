@@ -12,6 +12,7 @@ import { Button } from "@mui/material";
 import Questions from "./Questions";
 // importing Data
 import Data from "../Static-Data/Data";
+import { convertLength } from "@mui/material/styles/cssUtils";
 const arr=[false,false,false]
 const Quiz = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const Quiz = () => {
   const openModal = () => setModalOpen(true);
   // changing question number state(n)
   const [n, setN] = useState(0);
-  const [option,setOption]=useState("")
+  const [option,setOption]=useState(" ")
   // options functions to set options
 // ......................
 // setdisvalue for disablaing options
@@ -78,14 +79,14 @@ const [optionStore,setOptionStore]=useState({
           tem = 2;
           break;
         default:
-          // text=2
+          tem=""
           console.log("defaulttttttttttttttttttttttttttttttttttttt");
        }
   setDisvalue(tem)
   setOption(optionStore.A[0])
   }else{
     setDisvalue("")
-    setOption("")
+    setOption(" ")
   }
   };
   const handleSecB = () => {
@@ -106,14 +107,14 @@ const [optionStore,setOptionStore]=useState({
             tem = 2;
             break;
           default:
-            // text=2
+            tem=""
             console.log("defaulttttttttttttttttttttttttttttttttttttt");
          }
     setDisvalue(tem)
     setOption(optionStore.B[0])
     }else{
       setDisvalue("")
-      setOption("")
+      setOption(" ")
     }
   };
   const handleSecC = () => {
@@ -134,21 +135,25 @@ const [optionStore,setOptionStore]=useState({
           tem = 2;
           break;
         default:
-          // text=2
+          tem=""
           console.log("defaulttttttttttttttttttttttttttttttttttttt");
        }
   setDisvalue(tem)
   setOption(optionStore.C[0])
   }else{
     setDisvalue("")
-    setOption("")
+    setOption(" ")
   }
   };
 
   // going to next section whenever we are end of the section
 
   const goingNextSection = () => {
-    setOptionStore({...optionStore,[s]:[...optionStore[s],option]})
+    let t=[...optionStore[s]]
+    // t.splice(n,1,option)
+    t[n]=option
+    setOptionStore({...optionStore,[s]:[...t]})
+    // setOptionStore({...optionStore,[s]:[...optionStore[s],option]})
     setDisvalue("")
     if (s == "A") {
       setS("B");
@@ -168,17 +173,22 @@ const [optionStore,setOptionStore]=useState({
     setN(n + 1);
     
     // setOptionDisableArr([false, false, false]);
-    if(optionStore[s][n]==undefined){
-      setOptionStore({...optionStore,[s]:[...optionStore[s],option]})
-      setDisvalue("")
-    }
-    else{
+    // if(optionStore[s][n]==undefined){
       let t=[...optionStore[s]]
-      t.splice(n,1,option)
-      // setOptionStore()
-      console.log(t,"tttttttttttttttttttttttttttttttttttt9090909")
+      // t.splice(n,1,option)
+      t[n]=option
       setOptionStore({...optionStore,[s]:[...t]})
+      setDisvalue("")
+      setOption(" ")
+    // }
+    // else{
+      // let t=[...optionStore[s]]
+      // t.splice(n,1,option)
+      // // setOptionStore()
+      // console.log(t,"tttttttttttttttttttttttttttttttttttt9090909")
+      // setOptionStore({...optionStore,[s]:[...t]})
       if(optionStore[s][n+1]){
+        console.log(optionStore[s][n+1],"backkkkkkkkkkkkkkfrontttttt")
         let tem;
         switch(optionStore[s][n+1]){
           case "a":
@@ -191,7 +201,7 @@ const [optionStore,setOptionStore]=useState({
             tem = 2;
             break;
           default:
-            // text=2
+            tem=""
             console.log("defaulttttttttttttttttttttttttttttttttttttt");
          }
     setDisvalue(tem)
@@ -200,7 +210,7 @@ const [optionStore,setOptionStore]=useState({
       else{
         setDisvalue("")
       }
-    }
+    // }
 
 
 
@@ -225,7 +235,7 @@ const [optionStore,setOptionStore]=useState({
                     temp = 2;
                     break;
                   default:
-                    // text=2
+                    temp=""
                     console.log("defaulttttttttttttttttttttttttttttttttttttt");
     }
     setDisvalue(temp)
@@ -236,9 +246,9 @@ const [optionStore,setOptionStore]=useState({
   const HandleClear=()=>{
       if(optionStore[s][n]){
         setDisvalue("")
-        setOption("")
+        setOption(" ")
         let temp=[...optionStore[s]]
-        temp.splice(n,1,"")
+        temp.splice(n,1," ")
         setOptionStore({...optionStore,[s]:[...temp]})
       }
   }
@@ -249,8 +259,12 @@ const [optionStore,setOptionStore]=useState({
   "C":[]
   })
   const HandleMark=()=>{
-    // let t=[...markStore]
-    // setMarkStore({...markStore,[s]:[...]})
+    let t=[...markStore[s]]
+    t[n]==1?t[n]=0:t[n]=1
+    console.log({...markStore,[s]:[...t]},"markuppppppppppppppppppppppppppppppppp")
+    setMarkStore({...markStore,[s]:[...t]})
+   //   if(optionStore[s][n])
+
   }
   // handle increment button 
   const HandleNButtons=(index)=>{
@@ -276,8 +290,20 @@ const [optionStore,setOptionStore]=useState({
     }
     else{
       setDisvalue("")
-      setOption("")
+      setOption(" ")
     }
+  }
+  // storing time from time component for enablaning ssubmit button
+  const [timestore1,setTimestore1]=useState({
+    m1:"",
+    s1:"",
+    h1:""
+  })
+  const [timetoggle,setTimetoggle]=useState(true)
+  const HandleTime=(m1,s1,h1)=>{
+    setTimestore1({...timestore1,m1:m1,s1:s1,h1:h1})
+    console.log({...timestore1,m1:m1,s1:s1,h1:h1},"timooooooooo like worthhhhooo");
+    (m1<=3)? setTimetoggle(false) :setTimetoggle(true)
   }
 
   useEffect(() => {
@@ -336,7 +362,7 @@ const [optionStore,setOptionStore]=useState({
             view Instructions
           </Button>
 
-          <Timer />
+          <Timer HandleTime={HandleTime}/>
         </div>
         {/* ************************************************************questions********************************************/}
         <div className="question-container">
@@ -355,13 +381,29 @@ const [optionStore,setOptionStore]=useState({
           <Divider />
           <div className="numbers">
             {Data[`section${s}`].map((item, index) => (
-            (optionStore[s][index]==undefined || optionStore[s][index]=="")?<button
+            (optionStore[s][index]==undefined || optionStore[s][index]==" ")?
+           (markStore[s][index]==1?<button
+                className="number-btn2"
+                key={index}
+                onClick={() => HandleNButtons(index)}
+              >
+                {index + 1}
+              </button>:  <button
                 className="number-btn"
                 key={index}
                 onClick={() => HandleNButtons(index)}
               >
                 {index + 1}
-              </button>:
+              </button> 
+              ):
+              ((markStore[s][index]==1)?
+              <button
+              className="number-btn2"
+              key={index}
+              onClick={()=>HandleNButtons(index)}
+            >
+              {index + 1}
+            </button>:
               <button
               className="number-btn1"
               key={index}
@@ -369,6 +411,8 @@ const [optionStore,setOptionStore]=useState({
             >
               {index + 1}
             </button>
+              )
+            
 
             ))}
           </div>
@@ -402,7 +446,7 @@ const [optionStore,setOptionStore]=useState({
           </div>
         </div>
         <div className="submit-btn">
-          <Button variant="contained" style={{ backgroundColor: "blue" }}>
+          <Button variant="contained"  disabled={timetoggle}>
             Submit
           </Button>
         </div>
