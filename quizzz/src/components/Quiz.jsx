@@ -12,6 +12,7 @@ import { Button } from "@mui/material";
 import Questions from "./Questions";
 // importing Data
 import Data from "../Static-Data/Data";
+import { convertLength } from "@mui/material/styles/cssUtils";
 const arr = [false, false, false];
 const Quiz = () => {
   const { id } = useParams();
@@ -20,7 +21,7 @@ const Quiz = () => {
   const openModal = () => setModalOpen(true);
   // changing question number state(n)
   const [n, setN] = useState(0);
-  const [option, setOption] = useState("");
+  const [option, setOption] = useState(" ");
   // options functions to set options
   // ......................
   // setdisvalue for disablaing options
@@ -78,14 +79,14 @@ const Quiz = () => {
           tem = 2;
           break;
         default:
-          // text=2
+          tem = "";
           console.log("defaulttttttttttttttttttttttttttttttttttttt");
       }
       setDisvalue(tem);
       setOption(optionStore.A[0]);
     } else {
       setDisvalue("");
-      setOption("");
+      setOption(" ");
     }
   };
   const handleSecB = () => {
@@ -106,14 +107,14 @@ const Quiz = () => {
           tem = 2;
           break;
         default:
-          // text=2
+          tem = "";
           console.log("defaulttttttttttttttttttttttttttttttttttttt");
       }
       setDisvalue(tem);
       setOption(optionStore.B[0]);
     } else {
       setDisvalue("");
-      setOption("");
+      setOption(" ");
     }
   };
   const handleSecC = () => {
@@ -134,21 +135,25 @@ const Quiz = () => {
           tem = 2;
           break;
         default:
-          // text=2
+          tem = "";
           console.log("defaulttttttttttttttttttttttttttttttttttttt");
       }
       setDisvalue(tem);
       setOption(optionStore.C[0]);
     } else {
       setDisvalue("");
-      setOption("");
+      setOption(" ");
     }
   };
 
   // going to next section whenever we are end of the section
 
   const goingNextSection = () => {
-    setOptionStore({ ...optionStore, [s]: [...optionStore[s], option] });
+    let t = [...optionStore[s]];
+    // t.splice(n,1,option)
+    t[n] = option;
+    setOptionStore({ ...optionStore, [s]: [...t] });
+    // setOptionStore({...optionStore,[s]:[...optionStore[s],option]})
     setDisvalue("");
     if (s == "A") {
       setS("B");
@@ -167,37 +172,43 @@ const Quiz = () => {
     setN(n + 1);
 
     // setOptionDisableArr([false, false, false]);
-    if (optionStore[s][n] == undefined) {
-      setOptionStore({ ...optionStore, [s]: [...optionStore[s], option] });
-      setDisvalue("");
-    } else {
-      let t = [...optionStore[s]];
-      t.splice(n, 1, option);
-      // setOptionStore()
-      console.log(t, "tttttttttttttttttttttttttttttttttttt9090909");
-      setOptionStore({ ...optionStore, [s]: [...t] });
-      if (optionStore[s][n + 1]) {
-        let tem;
-        switch (optionStore[s][n + 1]) {
-          case "a":
-            tem = 0;
-            break;
-          case "b":
-            tem = 1;
-            break;
-          case "c":
-            tem = 2;
-            break;
-          default:
-            // text=2
-            console.log("defaulttttttttttttttttttttttttttttttttttttt");
-        }
-        setDisvalue(tem);
-        setOption(optionStore[s][n + 1]);
-      } else {
-        setDisvalue("");
+    // if(optionStore[s][n]==undefined){
+    let t = [...optionStore[s]];
+    // t.splice(n,1,option)
+    t[n] = option;
+    setOptionStore({ ...optionStore, [s]: [...t] });
+    setDisvalue("");
+    setOption(" ");
+    // }
+    // else{
+    // let t=[...optionStore[s]]
+    // t.splice(n,1,option)
+    // // setOptionStore()
+    // console.log(t,"tttttttttttttttttttttttttttttttttttt9090909")
+    // setOptionStore({...optionStore,[s]:[...t]})
+    if (optionStore[s][n + 1]) {
+      console.log(optionStore[s][n + 1], "backkkkkkkkkkkkkkfrontttttt");
+      let tem;
+      switch (optionStore[s][n + 1]) {
+        case "a":
+          tem = 0;
+          break;
+        case "b":
+          tem = 1;
+          break;
+        case "c":
+          tem = 2;
+          break;
+        default:
+          tem = "";
+          console.log("defaulttttttttttttttttttttttttttttttttttttt");
       }
+      setDisvalue(tem);
+      setOption(optionStore[s][n + 1]);
+    } else {
+      setDisvalue("");
     }
+    // }
   };
   // console.log(optionStore1,"storeeeeeeeeeeeeeeeeeeeeeeeee")
   // backfunction.............
@@ -215,7 +226,7 @@ const Quiz = () => {
         temp = 2;
         break;
       default:
-        // text=2
+        temp = "";
         console.log("defaulttttttttttttttttttttttttttttttttttttt");
     }
     setDisvalue(temp);
@@ -226,9 +237,9 @@ const Quiz = () => {
   const HandleClear = () => {
     if (optionStore[s][n]) {
       setDisvalue("");
-      setOption("");
+      setOption(" ");
       let temp = [...optionStore[s]];
-      temp.splice(n, 1, "");
+      temp.splice(n, 1, " ");
       setOptionStore({ ...optionStore, [s]: [...temp] });
     }
   };
@@ -239,8 +250,14 @@ const Quiz = () => {
     C: [],
   });
   const HandleMark = () => {
-    // let t=[...markStore]
-    // setMarkStore({...markStore,[s]:[...]})
+    let t = [...markStore[s]];
+    t[n] == 1 ? (t[n] = 0) : (t[n] = 1);
+    console.log(
+      { ...markStore, [s]: [...t] },
+      "markuppppppppppppppppppppppppppppppppp"
+    );
+    setMarkStore({ ...markStore, [s]: [...t] });
+    //   if(optionStore[s][n])
   };
   // handle increment button
   const HandleNButtons = (index) => {
@@ -267,6 +284,21 @@ const Quiz = () => {
       setDisvalue("");
       setOption("");
     }
+  };
+  // storing time from time component for enablaning ssubmit button
+  const [timestore1, setTimestore1] = useState({
+    m1: "",
+    s1: "",
+    h1: "",
+  });
+  const [timetoggle, setTimetoggle] = useState(true);
+  const HandleTime = (m1, s1, h1) => {
+    setTimestore1({ ...timestore1, m1: m1, s1: s1, h1: h1 });
+    console.log(
+      { ...timestore1, m1: m1, s1: s1, h1: h1 },
+      "timooooooooo like worthhhhooo"
+    );
+    m1 <= 3 ? setTimetoggle(false) : setTimetoggle(true);
   };
 
   useEffect(() => {
@@ -324,7 +356,7 @@ const Quiz = () => {
             view Instructions
           </Button>
 
-          <Timer />
+          <Timer HandleTime={HandleTime} />
         </div>
         {/* ************************************************************questions********************************************/}
         <div className="question-container">
@@ -344,9 +376,27 @@ const Quiz = () => {
           <div className="numbers">
             {Data[`section${s}`].map((item, index) =>
               optionStore[s][index] == undefined ||
-              optionStore[s][index] == "" ? (
+              optionStore[s][index] == " " ? (
+                markStore[s][index] == 1 ? (
+                  <button
+                    className="number-btn2"
+                    key={index}
+                    onClick={() => HandleNButtons(index)}
+                  >
+                    {index + 1}
+                  </button>
+                ) : (
+                  <button
+                    className="number-btn"
+                    key={index}
+                    onClick={() => HandleNButtons(index)}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              ) : markStore[s][index] == 1 ? (
                 <button
-                  className="number-btn"
+                  className="number-btn2"
                   key={index}
                   onClick={() => HandleNButtons(index)}
                 >
@@ -406,7 +456,7 @@ const Quiz = () => {
           </div>
         </div>
         <div className="submit-btn">
-          <Button variant="contained" style={{ backgroundColor: "blue" }}>
+          <Button variant="contained" disabled={timetoggle}>
             Submit
           </Button>
         </div>

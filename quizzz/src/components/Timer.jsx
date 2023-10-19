@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Timer.css";
 import { Button } from "@mui/material";
-function Timer() {
+function Timer({ HandleTime }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(4);
   const [seconds, setSeconds] = useState(7);
@@ -26,6 +26,7 @@ function Timer() {
   };
   const ref = useRef();
   useEffect(() => {
+    HandleTime(minutes, seconds, hours);
     console.log("timer");
     // if (true) {
     ref.current = setInterval(() => {
