@@ -1,0 +1,25 @@
+.attempted-number-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+    /* max-width: 100%; */
+  }
+  table{
+    width:100%;
+  }
+  td{
+    text-align: center;
+  }
+  .attempted-number-container-btn{
+    margin-top: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:100px;
+  }
+  

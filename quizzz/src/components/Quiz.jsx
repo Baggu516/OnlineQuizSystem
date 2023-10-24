@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Instructions from "./Instructions";
 import Timer from "./Timer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Modal from "react-modal";
+
 import "./Quiz.css";
 // material ui
 // import Divider
@@ -13,12 +14,18 @@ import Questions from "./Questions";
 // importing Data
 import Data from "../Static-Data/Data";
 import { convertLength } from "@mui/material/styles/cssUtils";
+import PracticeModal2 from "./PracticeModal2";
 const arr=[false,false,false]
+Modal.setAppElement('#root');
+// context api
+
 const Quiz = () => {
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
+  const [mod, setMod] = useState(false)
   const closeModal = () => setModalOpen(false);
   const openModal = () => setModalOpen(true);
+  const HandleMod=()=>setMod(!mod)
   // changing question number state(n)
   const [n, setN] = useState(0);
   const [option,setOption]=useState(" ")
@@ -446,14 +453,26 @@ const [optionStore,setOptionStore]=useState({
           </div>
         </div>
         <div className="submit-btn">
-          <Button variant="contained"  disabled={timetoggle}>
-            Submit
+          <Button variant="contained" 
+           disabled={timetoggle}
+           onClick={HandleMod}
+           >
+            {/* <Link to="/modal2">Submit</Link> */}
+            submit
           </Button>
         </div>
 
         <Modal isOpen={modalOpen}>
           <Instructions closeModal={closeModal} isModal={false} />
         </Modal>
+        <Modal
+           ariaHideApp={true}
+
+           isOpen={mod}>
+           <PracticeModal2 passingdata={optionStore} HandleMod={HandleMod}/>
+           {/* <h1>hello</h1> */}
+           {/* <Instructions closeModal={closeModal} isModal={false} /> */}
+        </Modal> 
         {/* <Timer /> */}
       </div>
     </>

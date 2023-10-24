@@ -11,14 +11,20 @@ import Error from "./components/Error";
 import RedirectRoute from "./utils/RedirectRoute";
 import Quiz from "./components/Quiz";
 import Instructions from "./components/Instructions";
+import PracticeModal2 from "./components/PracticeModal2";
+// .........
+import SubmitComponent from "./components/SubmitComponent";
+import AnswersAndResponeses from "./components/AnswersAndResponeses";
 
+// ...............
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
+      
       <BrowserRouter>
         {/* <Quiz/> */}
-
+        {/* <SubmitComponent/> */}
         <Routes>
           <Route
             path="/"
@@ -52,7 +58,10 @@ function App() {
               </PrivateRoute>
             }
           />
+           <Route path="submit" element={<SubmitComponent />} />
+          <Route path="answers" element={<AnswersAndResponeses />} />
           <Route path="quiz/:id" element={<Quiz />} />
+          <Route path="modal2" element={<PracticeModal2 />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
