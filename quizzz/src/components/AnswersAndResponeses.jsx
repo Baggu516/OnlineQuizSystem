@@ -20,10 +20,10 @@ const AnswersAndResponeses = () => {
                  { Data[item1].map((item2,index2)=>{
                      return ( 
                       <div className="question-card" key={index2}> 
-                         <h3>{index2+1} .) ${item2["Q"]}</h3>
-                         <p>a.) {item2["a"]}</p>
-                         <p>b.) {item2["b"]}</p>
-                         <p>c.) {item2["c"]}</p>
+                         <h3>{` ${index2+1} .) ${item2["Q"]}`}</h3>
+                         <p>{`a.) ${item2["a"]}`}</p>
+                         <p>{`b.) ${item2["b"]}`}</p>
+                         <p>{`c.) ${item2["c"]}`}</p>
                          <Divider/>
                          <p className="answer">  Answer :  <b>{item2["solution"]}</b></p>
                       </div>
