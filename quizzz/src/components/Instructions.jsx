@@ -11,7 +11,6 @@ function Instructions({ closeModal, isModal }) {
 
   const handleOnChange = (e) => {
     if (checkRef.current.checked) {
-      console.log(buttonRef.current);
       buttonRef.current.disabled = false; //
     } else {
       buttonRef.current.disabled = true;
@@ -55,7 +54,10 @@ function Instructions({ closeModal, isModal }) {
               I agree to terms and conditions
             </label>
             <button
-              onClick={(e) => console.log("hi")}
+              onClick={() => {
+                console.log("navigating");
+                Navigate("/quiz/2");
+              }}
               ref={buttonRef}
               disabled={true}
             >
