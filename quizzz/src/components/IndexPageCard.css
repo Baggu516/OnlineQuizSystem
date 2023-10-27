@@ -1,0 +1,33 @@
+.card-container{
+    /* border: 1px solid black; */
+    width:350px;
+    height: 300px;
+    border-radius: 20px 20px 3px 3px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    transition-delay: 0.1s;
+
+}
+.card-container:hover{
+    transform: scale(1.02);
+}
+.card-img{
+    width:100%;
+    height: 60%;
+    border-radius: 20px 20px 3px 3px;
+}
+.content{
+    /* text-decoration:line-through; */
+    /* list-style: none; */
+    color: rgb(6, 20, 20);
+    font-size: 150%;
+}
+a{
+    text-decoration: none;
+}
+.attempt-now{
+    text-decoration: underline;
+}
