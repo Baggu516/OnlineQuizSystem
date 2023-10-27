@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 // import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "./Timer.css"
+import "./Timer.css";
 import { Button } from "@mui/material";
-function  Timer({HandleTime}) {
+function Timer({ HandleTime }) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(4);
   const [seconds, setSeconds] = useState(7);
@@ -26,32 +26,32 @@ function  Timer({HandleTime}) {
   };
   const ref = useRef();
   useEffect(() => {
-    HandleTime(minutes,seconds,hours)
+    HandleTime(minutes, seconds, hours);
     console.log("timer");
     // if (true) {
-      ref.current = setInterval(() => {
-        console.log(ref, "timer");
-        if (seconds === 0) {
-          // console.log(timer,"timer")
-          if (minutes === 0) {
-            if (hours === 0) {
-              // alert("Time up");
-              navigate("/");
-              return;
-            }
-            setHours((prevHours) => prevHours - 1);
-            setMinutes(59);
-          } else {
-            setMinutes((prevMinutes) => prevMinutes - 1);
+    ref.current = setInterval(() => {
+      console.log(ref, "timer");
+      if (seconds === 0) {
+        // console.log(timer,"timer")
+        if (minutes === 0) {
+          if (hours === 0) {
+            // alert("Time up");
+            navigate("/");
+            return;
           }
-          setSeconds(59);
+          setHours((prevHours) => prevHours - 1);
+          setMinutes(59);
         } else {
-          setSeconds((prevSeconds) => prevSeconds - 1);
+          setMinutes((prevMinutes) => prevMinutes - 1);
         }
-      }, 1000);
+        setSeconds(59);
+      } else {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      }
+    }, 1000);
     // } else {
-      // clearInterval(ref.current);
-      //   console.log()
+    // clearInterval(ref.current);
+    //   console.log()
     // }
     return () => {
       clearInterval(ref.current);
@@ -62,11 +62,16 @@ function  Timer({HandleTime}) {
     <div className="stopwatch">
       {/* <h1>Stopwatch Timer</h1> */}
       {/* <div className="timer"> */}
-        <Button variant="contained" color="error" size="large" className="timer-btn" >
+      <Button
+        variant="contained"
+        color="error"
+        size="large"
+        className="timer-btn"
+      >
         <span>{hours < 10 ? `0${hours}` : hours}</span>:
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-        </Button>
+      </Button>
       {/* </div> */}
       {/* <div className="buttons">
         <button onClick={startTimer} disabled={isRunning}>
