@@ -16,10 +16,20 @@ table, th, td {
     text-align: center;
   }
   .attempted-number-container-btn{
-    margin-top: 350px;
+    margin-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap:100px;
+  }
+  .attempted-text{
+    text-decoration: underline;
+  }
+  .total-attempted {
+   
+    margin-top: 100px;
+  }
+  .total-attempted tr{
+    max-width:1000px ;
   }
   

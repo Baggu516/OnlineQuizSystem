@@ -43,6 +43,12 @@ const [optionStore,setOptionStore]=useState({
   "B":[],
   "C":[]
 })
+// localStorage.setItem("A",[...optionStore["A"]])
+// localStorage.setItem("B",[...optionStore["B"]])
+// localStorage.setItem("C",[...optionStore["C"]])
+// console.log([...localStorage.getItem("A")])
+let str=JSON.stringify(optionStore)
+localStorage.setItem("optionstore",str)
 // ................................
   const option1 = () => {
     console.log("option1");

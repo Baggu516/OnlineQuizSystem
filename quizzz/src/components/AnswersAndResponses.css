@@ -51,6 +51,23 @@ ion-icon {
     padding: 5px;
     opacity: 0.8;
   }
-  .answer{
-    /* border: 1px solid black; */
+  /* .answer{
+    border: 1px solid black;
+  } */
+  .goto-top{
+    position: sticky;
+    /* margin-bottom: 0; */
+    /* position: relative; */
+    top:0;
+    right:0;
+    background-color: rgb(196, 178, 12);
+    /* bottom: 0; */
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+
+  }
+  .answered-option{
+    background-color: aqua;
   }
