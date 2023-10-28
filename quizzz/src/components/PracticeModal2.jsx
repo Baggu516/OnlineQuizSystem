@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "./PracticeModel2.css";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Data from "../Static-Data/Data";
 const PracticeModal2 = ({ passingdata,HandleMod }) => {
   const [answers, setAnswers] = useState({ ...passingdata });
@@ -70,7 +70,7 @@ const PracticeModal2 = ({ passingdata,HandleMod }) => {
       <div className="attempted-number-container-btn">
         <Button  onClick={HandleMod} variant="contained" > Back</Button>
         
-        <Button  variant="contained"><Link to="/submit">Submit Test</Link></Button>
+        <Button  variant="contained" ><NavLink to="/submit" state={{"d":passingdata}}>Submit Test</NavLink></Button>
       </div>
     </div>
   );
