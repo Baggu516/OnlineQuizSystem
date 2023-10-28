@@ -12,3 +12,14 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={ContextData}>{children}</AuthContext.Provider>
   );
 };
+
+{
+  /* <div>
+  <input>
+  </input>
+</div>
+
+<AuthContext.Provider value={ContextData}>
+  <App/>
+</AuthContext.Provider> */
+}

@@ -1,24 +1,23 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Instructions.css";
 import { Checkbox } from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 function Instructions({ closeModal, isModal }) {
   const checkRef = useRef(null);
 
-  const buttonRef = useRef(null);
+  const id = useParams();
+
   const navigate = useNavigate();
+
+  const [buttonEnable, setButtonEnable] = useState(false);
 
   const handleOnChange = (e) => {
     if (checkRef.current.checked) {
-      buttonRef.current.disabled = false; //
+      setButtonEnable(!buttonEnable);
     } else {
-      buttonRef.current.disabled = true;
+      setButtonEnable(!buttonEnable);
     }
-  };
-
-  const handleButtonClick = (e) => {
-    console.log("hello world");
   };
 
   return (
@@ -56,10 +55,9 @@ function Instructions({ closeModal, isModal }) {
             <button
               onClick={() => {
                 console.log("navigating");
-                Navigate("/quiz/2");
+                navigate("quiz/2");
               }}
-              ref={buttonRef}
-              disabled={true}
+              disabled={!buttonEnable}
             >
               start the exam
             </button>
