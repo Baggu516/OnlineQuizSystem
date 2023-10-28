@@ -1,5 +1,24 @@
+.submit-container{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    margin-top: 200px;
+    background-color: aquamarine;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
+@keyframes example {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+  }
+
+
+
 .total-marks-container{
     width:400px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
