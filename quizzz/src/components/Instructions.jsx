@@ -20,6 +20,11 @@ function Instructions({ closeModal, isModal }) {
     }
   };
 
+  const handleButtonClick = () => {
+    console.log("naviagtomnh");
+    navigate("/quiz/2");
+  };
+
   return (
     <div>
       <div className="close-button">
@@ -53,10 +58,7 @@ function Instructions({ closeModal, isModal }) {
               I agree to terms and conditions
             </label>
             <button
-              onClick={() => {
-                console.log("navigating");
-                navigate("quiz/2");
-              }}
+              onClick={() => handleButtonClick()}
               disabled={!buttonEnable}
             >
               start the exam
