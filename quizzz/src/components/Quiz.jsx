@@ -23,7 +23,7 @@ const arr = [false, false, false];
 Modal.setAppElement("#root");
 const Quiz = () => {
   // creating usecontext for store answer data
-  // const { answerData,setAnswerData } = useContext(AuthContext);
+  const { answerData,setAnswerData } = useContext(AuthContext);
   // ............................................ 
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
@@ -319,7 +319,8 @@ const Quiz = () => {
     m1 <= 3 ? setTimetoggle(false) : setTimetoggle(true);
   };
   // storing optionstore in global state i.e.,setsetAnswerData
-  // setAnswerData({...optionStore})
+  setAnswerData({...optionStore})
+  // ....................................................
 
   useEffect(() => {
     console.log(n, "useEffecttttttttttttttttt");

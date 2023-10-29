@@ -2,15 +2,15 @@ import React, { useState, useEffect,useContext } from "react";
 import Data from "../Static-Data/Data";
 import "./SubmitComponent.css";
 import { Link, useLocation } from "react-router-dom";
-// import AuthContext from "../context/AuthContext";
+import AuthContext from "../context/AuthContext";
 // import { createContext } from "react";
 
 // const AuthContext = createContext();
 const SubmitComponent = () => {
   const loc = useLocation();
   console.log("loccccation", loc.state);
-  // const { answerData } = useContext(AuthContext);
-  // console.log(answerData,"answerDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  const { answerData } = useContext(AuthContext);
+  console.log(answerData,"answerDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   const [obtainedMarks, setObtainedMarks] = useState(0);
   const [totalMarks, setTotalMarks] = useState(0);
   useEffect(() => {
