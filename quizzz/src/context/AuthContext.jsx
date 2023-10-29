@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     setAnswerData:setAnswerData
 
   };
-
+    
   return (
     <AuthContext.Provider value={ContextData}>{children}</AuthContext.Provider>
   );
