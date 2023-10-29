@@ -31,8 +31,21 @@
 }
 nav{
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
+.index-img{
+    display: flex;
+    align-items: center;
+}
+.index-logout{
+    margin-right:30px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap:5px;
+}
+
 .quiz-text{
     font-size: 30px;
 }

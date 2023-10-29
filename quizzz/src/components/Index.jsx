@@ -2,15 +2,24 @@ import React from "react";
 import IndexpageCard from "./IndexpageCard";
 import "./Index.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 const Index = () => {
+  const {setUser}=useContext(AuthContext)
   return (
     <div className="zoom-in">
       <nav>
+        <div className="index-img">
         <img src="./quiz.jpg" alt="fghjkl" className="quiz-img" />
         <h3 className="quiz-text">
           Quiz <span style={{ opacity: 0.6 }}>Hub</span>
         </h3>
-        <p style={{ right: "0px" }}>Hello </p>
+        </div>
+        
+        <div className="index-logout">
+          <h2>Logout</h2>
+          <button onClick={()=>setUser(null)}><ion-icon name="log-out-outline"  size="small"></ion-icon></button>
+        </div>
       </nav>
       <div className="card-container1">
         {/* <Link to="/instructions"><IndexpageCard/></Link>
