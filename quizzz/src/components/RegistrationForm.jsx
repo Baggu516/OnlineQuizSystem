@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import "./LoginForm.css"; // Import the CSS file for styling
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target);
+    let user = {};
+    user["username"] = event.target.username.value;
+    user["email"] = event.target.email.value;
+    user["phone"] = event.target.phone.value;
+    user["password"] = event.target.password.value;
+    let users = localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : [];
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("You have successfully registered !! Now Login to app!");
+    navigate("/login");
   };
 
   return (

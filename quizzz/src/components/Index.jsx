@@ -10,6 +10,7 @@ const Index = () => {
         <h3 className="quiz-text">
           Quiz <span style={{ opacity: 0.6 }}>Hub</span>
         </h3>
+        <p style={{ right: "0px" }}>Hello </p>
       </nav>
       <div className="card-container1">
         {/* <Link to="/instructions"><IndexpageCard/></Link>

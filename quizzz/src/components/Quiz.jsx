@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Instructions from "./Instructions";
 import Timer from "./Timer";
 import { Link, useParams } from "react-router-dom";
@@ -23,14 +23,18 @@ const arr = [false, false, false];
 Modal.setAppElement("#root");
 const Quiz = () => {
   // creating usecontext for store answer data
-  const { answerData,setAnswerData } = useContext(AuthContext);
-  // ............................................ 
+  const { answerData, setAnswerData } = useContext(AuthContext);
+  // ............................................
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
   const [mod, setMod] = useState(false);
   const closeModal = () => setModalOpen(false);
   const openModal = () => setModalOpen(true);
-  const HandleMod = () => setMod(!mod);
+  const HandleMod = () => {
+    setMod(!mod);
+    setAnswerData({ ...optionStore });
+  };
+
   // changing question number state(n)
   const [n, setN] = useState(0);
   const [option, setOption] = useState(" ");
@@ -110,7 +114,7 @@ const Quiz = () => {
   const handleSecB = () => {
     setS("B");
     setN(0);
-    setSecDisable(["white","black", "white"]);
+    setSecDisable(["white", "black", "white"]);
     setGoNextText("Go To Next section");
     if (optionStore.B[0]) {
       let tem;
@@ -138,7 +142,7 @@ const Quiz = () => {
   const handleSecC = () => {
     setS("C");
     setN(0);
-    setSecDisable(["white","white","black"]);
+    setSecDisable(["white", "white", "black"]);
     setGoNextText("Go to Back-Section or Submit");
     if (optionStore.C[0]) {
       let tem;
@@ -180,7 +184,7 @@ const Quiz = () => {
     } else if (s == "B") {
       setS("C");
       setN(0);
-      setSecDisable([ "white","white","black"]);
+      setSecDisable(["white", "white", "black"]);
       setGoNextText("Go to Back-Section or Submit");
     } else {
     }
@@ -318,9 +322,8 @@ const Quiz = () => {
     );
     m1 <= 3 ? setTimetoggle(false) : setTimetoggle(true);
   };
-  // storing optionstore in global state i.e.,setsetAnswerData
-  setAnswerData({...optionStore})
-  // ....................................................
+  // // storing optionstore in global state i.e.,setsetAnswerData
+  // setAnswerData({ ...optionStore });
 
   useEffect(() => {
     console.log(n, "useEffecttttttttttttttttt");
@@ -345,7 +348,7 @@ const Quiz = () => {
             className="section-btn"
             onClick={handleSecA}
             // disabled={secdisable[0]}
-            style={{color:`${secdisable[0]}`}}
+            style={{ color: `${secdisable[0]}` }}
           >
             section-A
           </button>
@@ -353,7 +356,7 @@ const Quiz = () => {
             variant="contained"
             className="section-btn"
             onClick={handleSecB}
-            style={{color:`${secdisable[1]}`}}
+            style={{ color: `${secdisable[1]}` }}
             // disabled={secdisable[1]}
           >
             section-B
@@ -363,7 +366,7 @@ const Quiz = () => {
             className="section-btn"
             onClick={handleSecC}
             // disabled={secdisable[2]}
-            style={{color:`${secdisable[2]}`}}
+            style={{ color: `${secdisable[2]}` }}
           >
             section-c
           </button>

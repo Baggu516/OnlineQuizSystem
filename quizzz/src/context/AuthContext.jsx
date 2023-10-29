@@ -1,15 +1,16 @@
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  const [answerData,setAnswerData]=useState()
+  const [answerData, setAnswerData] = useState();
+  const [user, setUser] = useState(null);
   let ContextData = {
-    user: "bcxd",
-    answerData:answerData,
-    setAnswerData:setAnswerData
-
+    user: user,
+    setUser: setUser,
+    answerData: answerData,
+    setAnswerData: setAnswerData,
   };
     
   return (
