@@ -40,10 +40,22 @@
 }
 .Instruction-btn{
     /* border: ; */
-    background: none;
+    /* background: none;
     font-weight: 500;
     opacity: .8;
-    padding: 4px;
+    padding: 5px;
+    background-color: rgb(246, 151, 8);
+    border: none; */
+    background: rgb(224, 150, 2) ;
+    width: 180px;
+    color: rgb(29, 30, 32);
+    font-size: large;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  margin: 2px;
+  cursor: pointer;
+  /* padding: 5px; */
     
 
 }
@@ -58,12 +70,15 @@
 
 }
 .section-btn{
-    border:2px solid rgb(28, 52, 240) ;
-    background: rgb(28, 52, 240) ;
+    /* border:2px solid rgb(28, 52, 240) ; */
+    background: rgb(8, 109, 177) ;
     width: 130px;
-    color: aliceblue;
+    color: rgb(29, 30, 32);
     font-size: large;
-
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 
 }
 .clear-mark-btn{
@@ -116,28 +131,39 @@
     flex-direction: column;
 }
 .number-btn{
+    border-radius: 5px;
     width:50px;
     padding: 5px;
     background-color: rgb(195, 226, 228);
+    cursor: pointer;
 
 }
 .number-btn1{
+    border-radius: 5px;
     width:50px;
     padding: 5px;
     background-color: rgb(47, 9, 237);
-
+    cursor: pointer;
 }
 .number-btn2{
+    border-radius: 5px;
+    /* border: none; */
     width:50px;
     padding: 5px;
-    background-color: rgb(182, 144, 9);
+    background-color: rgb(213, 7, 203);
+    cursor: pointer;
 
 }
 
 .section-heading-btn{
     width:100px;
     padding: 10px;
-    background-color: rgb(243, 178, 16);
+    background-color: rgb(19, 20, 20);
     margin-top: 30px;
+    color: aliceblue;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 15px;
+    
 
 }

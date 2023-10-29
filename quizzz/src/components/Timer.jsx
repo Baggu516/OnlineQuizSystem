@@ -62,7 +62,7 @@ function Timer({ HandleTime }) {
     <div className="stopwatch">
       {/* <h1>Stopwatch Timer</h1> */}
       {/* <div className="timer"> */}
-      <Button
+      <button
         variant="contained"
         color="error"
         size="large"
@@ -71,7 +71,7 @@ function Timer({ HandleTime }) {
         <span>{hours < 10 ? `0${hours}` : hours}</span>:
         <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-      </Button>
+      </button>
       {/* </div> */}
       {/* <div className="buttons">
         <button onClick={startTimer} disabled={isRunning}>
