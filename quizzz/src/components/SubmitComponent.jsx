@@ -1,22 +1,20 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Data from "../Static-Data/Data";
 import "./SubmitComponent.css";
 import { Link, useLocation } from "react-router-dom";
-// import AuthContext from "../context/AuthContext";
-// import { createContext } from "react";
-
-// const AuthContext = createContext();
+import AuthContext from "../context/AuthContext";
 const SubmitComponent = () => {
-  const loc = useLocation();
-  console.log("loccccation", loc.state);
-  // const { answerData } = useContext(AuthContext);
-  // console.log(answerData,"answerDataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  // const loc = useLocation();
+  // console.log("loccccation", loc.state);
   const [obtainedMarks, setObtainedMarks] = useState(0);
   const [totalMarks, setTotalMarks] = useState(0);
+  const { answerData } = useContext(AuthContext);
+  console.log("answerData", answerData);
   useEffect(() => {
     let c = 0;
     let c1 = 0;
-    let t = loc.state["d"];
+    // let t = loc.state["d"];
+    let t = answerData;
     Object.keys(Data).map((item) => {
       Data[item].map((i, index) => {
         c1++;

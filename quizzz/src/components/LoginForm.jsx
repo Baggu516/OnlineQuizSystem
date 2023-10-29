@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LoginForm.css"; // Import the CSS file for styling
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const LoginForm = () => {
+  const { setUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     // You can add your authentication logic here
-    console.log("Username:", event.target.username.value);
-    console.log("Password:", event.target.password.value);
+    const users = localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : null;
+    console.log("users", users);
+    if (users) {
+      const user = users.find(
+        (person) => person.username === event.target.username.value
+      );
+      console.log("user", user);
+      if (user && user.password === event.target.password.value) {
+        setUser(user);
+        return;
+      }
+    }
+    alert("Invalid login details");
   };
 
   return (
