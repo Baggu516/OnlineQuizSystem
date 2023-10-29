@@ -16,18 +16,17 @@ import Data from "../Static-Data/Data";
 import { convertLength } from "@mui/material/styles/cssUtils";
 
 import PracticeModal2 from "./PracticeModal2";
-const arr=[false,false,false]
-Modal.setAppElement('#root');
+const arr = [false, false, false];
+Modal.setAppElement("#root");
 // context api
-
 
 const Quiz = () => {
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
-  const [mod, setMod] = useState(false)
+  const [mod, setMod] = useState(false);
   const closeModal = () => setModalOpen(false);
   const openModal = () => setModalOpen(true);
-  const HandleMod=()=>setMod(!mod)
+  const HandleMod = () => setMod(!mod);
   // changing question number state(n)
   const [n, setN] = useState(0);
   const [option, setOption] = useState(" ");
@@ -36,22 +35,22 @@ const Quiz = () => {
   // setdisvalue for disablaing options
   // options disableing
   const [optionDisableArr, setOptionDisableArr] = useState([]);
-const [disvalue,setDisvalue]=useState()
-// ................................
-// option storing array
-const [optionStore1,setOptionStore1]=useState([])
-const [optionStore,setOptionStore]=useState({
-  "A":[],
-  "B":[],
-  "C":[]
-})
-// localStorage.setItem("A",[...optionStore["A"]])
-// localStorage.setItem("B",[...optionStore["B"]])
-// localStorage.setItem("C",[...optionStore["C"]])
-// console.log([...localStorage.getItem("A")])
-let str=JSON.stringify(optionStore)
-localStorage.setItem("optionstore",str)
-// ...............................
+  const [disvalue, setDisvalue] = useState();
+  // ................................
+  // option storing array
+  const [optionStore1, setOptionStore1] = useState([]);
+  const [optionStore, setOptionStore] = useState({
+    A: [],
+    B: [],
+    C: [],
+  });
+  // localStorage.setItem("A",[...optionStore["A"]])
+  // localStorage.setItem("B",[...optionStore["B"]])
+  // localStorage.setItem("C",[...optionStore["C"]])
+  // console.log([...localStorage.getItem("A")])
+  let str = JSON.stringify(optionStore);
+  localStorage.setItem("optionstore", str);
+  // ...............................
   const option1 = () => {
     console.log("option1");
     setOption("a");
@@ -471,28 +470,20 @@ localStorage.setItem("optionstore",str)
           </div>
         </div>
         <div className="submit-btn">
-
-          <Button variant="contained" 
-           disabled={timetoggle}
-           onClick={HandleMod}
-           >
+          <Button variant="contained" disabled={timetoggle} onClick={HandleMod}>
             {/* <Link to="/modal2">Submit</Link> */}
             submit
-
           </Button>
         </div>
 
         <Modal isOpen={modalOpen}>
           <Instructions closeModal={closeModal} isModal={true} />
         </Modal>
-        <Modal
-           ariaHideApp={true}
-
-           isOpen={mod}>
-           <PracticeModal2 passingdata={optionStore} HandleMod={HandleMod}/>
-           {/* <h1>hello</h1> */}
-           {/* <Instructions closeModal={closeModal} isModal={false} /> */}
-        </Modal> 
+        <Modal ariaHideApp={true} isOpen={mod}>
+          <PracticeModal2 passingdata={optionStore} HandleMod={HandleMod} />
+          {/* <h1>hello</h1> */}
+          {/* <Instructions closeModal={closeModal} isModal={false} /> */}
+        </Modal>
         {/* <Timer /> */}
       </div>
     </>

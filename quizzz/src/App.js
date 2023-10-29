@@ -21,7 +21,6 @@ function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
-      
       <BrowserRouter>
         {/* <Quiz/> */}
         {/* <SubmitComponent/> */}
@@ -51,14 +50,14 @@ function App() {
             }
           />
           <Route
-            path="instructions"
+            path="quiz/instructions/:id"
             element={
               <PrivateRoute>
                 <Instructions isModal={false} />
               </PrivateRoute>
             }
           />
-           <Route path="submit" element={<SubmitComponent />} />
+          <Route path="submit" element={<SubmitComponent />} />
           <Route path="answers" element={<AnswersAndResponeses />} />
           <Route path="quiz/:id" element={<Quiz />} />
           <Route path="modal2" element={<PracticeModal2 />} />
