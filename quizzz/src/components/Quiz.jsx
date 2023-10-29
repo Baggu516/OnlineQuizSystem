@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Instructions from "./Instructions";
 import Timer from "./Timer";
 import { Link, useParams } from "react-router-dom";
@@ -16,11 +16,15 @@ import Data from "../Static-Data/Data";
 import { convertLength } from "@mui/material/styles/cssUtils";
 
 import PracticeModal2 from "./PracticeModal2";
+// context api
+// import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 const arr = [false, false, false];
 Modal.setAppElement("#root");
-// context api
-
 const Quiz = () => {
+  // creating usecontext for store answer data
+  // const { answerData,setAnswerData } = useContext(AuthContext);
+  // ............................................ 
   const { id } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
   const [mod, setMod] = useState(false);
@@ -72,13 +76,13 @@ const Quiz = () => {
 
   // handling section functions to render particular section questions
   const [s, setS] = useState("A"); //s=section
-  const [secdisable, setSecDisable] = useState([true, false, false]);
+  const [secdisable, setSecDisable] = useState(["black", "white", "white"]);
 
   const [goNextText, setGoNextText] = useState("Go To Next section");
   const handleSecA = () => {
     setS("A");
     setN(0);
-    setSecDisable([true, false, false]);
+    setSecDisable(["black", "white", "white"]);
     setGoNextText("Go To Next section");
     if (optionStore.A[0]) {
       let tem;
@@ -106,7 +110,7 @@ const Quiz = () => {
   const handleSecB = () => {
     setS("B");
     setN(0);
-    setSecDisable([false, true, false]);
+    setSecDisable(["white","black", "white"]);
     setGoNextText("Go To Next section");
     if (optionStore.B[0]) {
       let tem;
@@ -134,7 +138,7 @@ const Quiz = () => {
   const handleSecC = () => {
     setS("C");
     setN(0);
-    setSecDisable([false, false, true]);
+    setSecDisable(["white","white","black"]);
     setGoNextText("Go to Back-Section or Submit");
     if (optionStore.C[0]) {
       let tem;
@@ -172,11 +176,11 @@ const Quiz = () => {
     if (s == "A") {
       setS("B");
       setN(0);
-      setSecDisable([false, true, false]);
+      setSecDisable(["black", "white", "white"]);
     } else if (s == "B") {
       setS("C");
       setN(0);
-      setSecDisable([false, false, true]);
+      setSecDisable([ "white","white","black"]);
       setGoNextText("Go to Back-Section or Submit");
     } else {
     }
@@ -314,6 +318,8 @@ const Quiz = () => {
     );
     m1 <= 3 ? setTimetoggle(false) : setTimetoggle(true);
   };
+  // storing optionstore in global state i.e.,setsetAnswerData
+  // setAnswerData({...optionStore})
 
   useEffect(() => {
     console.log(n, "useEffecttttttttttttttttt");
@@ -333,42 +339,45 @@ const Quiz = () => {
         </div>
 
         <div className="sections-container">
-          <Button
+          <button
             variant="contained"
             className="section-btn"
             onClick={handleSecA}
-            disabled={secdisable[0]}
+            // disabled={secdisable[0]}
+            style={{color:`${secdisable[0]}`}}
           >
             section-A
-          </Button>
-          <Button
+          </button>
+          <button
             variant="contained"
             className="section-btn"
             onClick={handleSecB}
-            disabled={secdisable[1]}
+            style={{color:`${secdisable[1]}`}}
+            // disabled={secdisable[1]}
           >
             section-B
-          </Button>
-          <Button
+          </button>
+          <button
             variant="contained"
             className="section-btn"
             onClick={handleSecC}
-            disabled={secdisable[2]}
+            // disabled={secdisable[2]}
+            style={{color:`${secdisable[2]}`}}
           >
             section-c
-          </Button>
+          </button>
           <Divider />
         </div>
 
         <div className="time-instruction">
-          <Button
+          <button
             variant="contained"
             color="warning"
             className="Instruction-btn"
             onClick={openModal}
           >
             view Instructions
-          </Button>
+          </button>
 
           <Timer HandleTime={HandleTime} />
         </div>

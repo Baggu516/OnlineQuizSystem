@@ -70,7 +70,7 @@ const PracticeModal2 = ({ passingdata,HandleMod }) => {
       <div className="attempted-number-container-btn">
         <Button  onClick={HandleMod} variant="contained" > Back</Button>
         
-        <Button  variant="contained" ><NavLink to="/submit" state={{"d":passingdata}}>Submit Test</NavLink></Button>
+        <Button  variant="contained" ><NavLink style={{color:"white"}}to="/submit" state={{"d":passingdata}}>Submit Test</NavLink></Button>
       </div>
     </div>
   );
