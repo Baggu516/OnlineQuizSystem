@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Data from "../Static-Data/Data";
+// import Data from "../Static-Data/Data";
+import Data1 from "../Static-Data/Data";
 import "./AnswersAndResponses.css";
 // import Divider from "@mui/material"
 import { Divider } from "@mui/material";
+import AuthContext from "../context/AuthContext";
 const AnswersAndResponeses = () => {
+  const {id}=useContext(AuthContext)
   const [isScroll, setIsScroll] = useState("none");
   const [ss, setSs] = useState();
-  const [keyss, setKeyss] = useState([...Object.keys(Data)]);
+  const [keyss, setKeyss] = useState([...Object.keys(Data1[id])]);
   // var t=[...localStorage.getItem("A")]
   // console.log(t)
   // var t1=[...localStorage.getItem("B")]
@@ -48,7 +51,7 @@ const AnswersAndResponeses = () => {
         return (
           <div className="questionsss-card" key={index1}>
             <h2 className="section-heading">{item1}</h2>
-            {Data[item1].map((item2, index2) => {
+            {Data1[id][item1].map((item2, index2) => {
               return (
                 <div className="question-card" key={index2}>
                   <h3>{` ${index2 + 1} .) ${item2["Q"]}`}</h3>

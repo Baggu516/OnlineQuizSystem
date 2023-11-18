@@ -12,7 +12,8 @@ import { Button } from "@mui/material";
 // importing question component
 import Questions from "./Questions";
 // importing Data
-import Data from "../Static-Data/Data";
+// import Data2 from "../Static-Data/Data";
+import Data1 from "../Static-Data/Data"
 import { convertLength } from "@mui/material/styles/cssUtils";
 
 import PracticeModal2 from "./PracticeModal2";
@@ -22,10 +23,13 @@ import AuthContext from "../context/AuthContext";
 const arr = [false, false, false];
 Modal.setAppElement("#root");
 const Quiz = () => {
+  // console.log("data222",Data2,Data1)
   // creating usecontext for store answer data
-  const { answerData, setAnswerData } = useContext(AuthContext);
+  const { answerData, setAnswerData,setId } = useContext(AuthContext);
   // ............................................
   const { id } = useParams();
+  const [id1,setId1]=useState(Number(id))
+   setId(Number(id))
   const [modalOpen, setModalOpen] = useState(false);
   const [mod, setMod] = useState(false);
   const closeModal = () => setModalOpen(false);
@@ -48,14 +52,12 @@ const Quiz = () => {
   // option storing array
   const [optionStore1, setOptionStore1] = useState([]);
   const [optionStore, setOptionStore] = useState({
+
     A: [],
     B: [],
     C: [],
   });
-  // localStorage.setItem("A",[...optionStore["A"]])
-  // localStorage.setItem("B",[...optionStore["B"]])
-  // localStorage.setItem("C",[...optionStore["C"]])
-  // console.log([...localStorage.getItem("A")])
+ 
   let str = JSON.stringify(optionStore);
   localStorage.setItem("optionstore", str);
   // ...............................
@@ -143,7 +145,7 @@ const Quiz = () => {
     setS("C");
     setN(0);
     setSecDisable(["white", "white", "black"]);
-    setGoNextText("Go to Back-Section or Submit");
+    setGoNextText("Save & Submit");
     if (optionStore.C[0]) {
       let tem;
       switch (optionStore.C[0]) {
@@ -175,18 +177,23 @@ const Quiz = () => {
     // t.splice(n,1,option)
     t[n] = option;
     setOptionStore({ ...optionStore, [s]: [...t] });
+    setAnswerData({...optionStore,[s]:[...t]});
     // setOptionStore({...optionStore,[s]:[...optionStore[s],option]})
     setDisvalue("");
     if (s == "A") {
       setS("B");
       setN(0);
-      setSecDisable(["black", "white", "white"]);
+      setSecDisable([ "white","black", "white"]);
     } else if (s == "B") {
       setS("C");
       setN(0);
       setSecDisable(["white", "white", "black"]);
-      setGoNextText("Go to Back-Section or Submit");
+      setGoNextText("Save & Submit");
     } else {
+      setS("B")
+      setN(0);
+      setSecDisable([ "white","black", "white"]);
+
     }
   };
   // save and next button function
@@ -199,6 +206,7 @@ const Quiz = () => {
     // t.splice(n,1,option)
     t[n] = option;
     setOptionStore({ ...optionStore, [s]: [...t] });
+    setAnswerData({...optionStore,[s]:[...t]});
     setDisvalue("");
     setOption(" ");
     // }
@@ -263,6 +271,7 @@ const Quiz = () => {
       let temp = [...optionStore[s]];
       temp.splice(n, 1, " ");
       setOptionStore({ ...optionStore, [s]: [...temp] });
+      setAnswerData({...optionStore,[s]:[...temp]});
     }
   };
   // mark up state
@@ -324,7 +333,7 @@ const Quiz = () => {
   };
   // // storing optionstore in global state i.e.,setsetAnswerData
   // setAnswerData({ ...optionStore });
-
+ console.log("data111idddd",Data1[id1],id,id1)
   useEffect(() => {
     console.log(n, "useEffecttttttttttttttttt");
     if (disvalue > -1) {
@@ -339,7 +348,7 @@ const Quiz = () => {
     <>
       <div className="quiz">
         <div className="quiz-heading">
-          This is quizz page where actuall quiz {id} goes!!
+          {id1==0?<h2>React Quiz</h2>:<h2>General Knowledge Quiz</h2>}
         </div>
 
         <div className="sections-container">
@@ -388,6 +397,7 @@ const Quiz = () => {
         {/* ************************************************************questions********************************************/}
         <div className="question-container">
           <Questions
+          id1={id1}
             n={n}
             option1={option1}
             option2={option2}
@@ -401,7 +411,7 @@ const Quiz = () => {
           <button className="section-heading-btn">section-{s}</button>
           <Divider />
           <div className="numbers">
-            {Data[`section${s}`].map((item, index) =>
+            {Data1[id1][`section${s}`].map((item, index) =>
               optionStore[s][index] == undefined ||
               optionStore[s][index] == " " ? (
                 markStore[s][index] == 1 ? (
@@ -452,7 +462,7 @@ const Quiz = () => {
             </Button>
           </div>
           <div className="save-next-btn">
-            {Data[`section${s}`].length - 1 !== n ? (
+            {Data1[id1][`section${s}`].length-1  !== n ? (
               <>
                 {n > 0 && (
                   <Button
@@ -472,6 +482,14 @@ const Quiz = () => {
                 </Button>
               </>
             ) : (
+              <>
+              <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={HandleBack}
+                  >
+                    Back
+                  </Button>
               <Button
                 variant="contained"
                 color="primary"
@@ -479,6 +497,7 @@ const Quiz = () => {
               >
                 {goNextText}
               </Button>
+              </>
             )}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Data from "../Static-Data/Data";
+import Data1 from "../Static-Data/Data";
 import "./SubmitComponent.css";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
@@ -8,15 +8,15 @@ const SubmitComponent = () => {
   // console.log("loccccation", loc.state);
   const [obtainedMarks, setObtainedMarks] = useState(0);
   const [totalMarks, setTotalMarks] = useState(0);
-  const { answerData } = useContext(AuthContext);
+  const { answerData,id } = useContext(AuthContext);
   console.log("answerData", answerData);
   useEffect(() => {
     let c = 0;
     let c1 = 0;
     // let t = loc.state["d"];
     let t = answerData;
-    Object.keys(Data).map((item) => {
-      Data[item].map((i, index) => {
+    Object.keys(Data1[id]).map((item) => {
+      Data1[id][item].map((i, index) => {
         c1++;
         if (i["solution"] == t[item.split("").at(-1)][index]) {
           c++;

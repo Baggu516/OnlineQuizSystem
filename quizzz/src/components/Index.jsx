@@ -33,14 +33,14 @@ const Index = () => {
           <p className="desc-text">Attempt Any Quiz</p>
         </div>
         <div className="cards1">
-          <Link to="/quiz/instructions/1">
+          <Link to="/quiz/instructions/0">
             <IndexpageCard
               image="./react.jpg"
               alt="react"
               content="React Quiz"
             />
           </Link>
-          <Link to="/quiz/instructions/2">
+          <Link to="/quiz/instructions/1">
             <IndexpageCard
               image="./general.jpg"
               alt="genaral"

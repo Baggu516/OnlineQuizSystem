@@ -23,7 +23,7 @@ ion-icon {
   }
   .main{
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 10px auto;
@@ -36,10 +36,13 @@ ion-icon {
     padding: 10px;
     margin: 10px;
     border-radius:10px ;
+    width: 500px;
   }
   .questionsss-card{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
   }
   .section-heading{

@@ -6,7 +6,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 function Instructions({ closeModal, isModal }) {
   const checkRef = useRef(null);
 
-  const id = useParams();
+  const {id} = useParams();
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function Instructions({ closeModal, isModal }) {
 
   const handleButtonClick = () => {
     console.log("naviagtomnh");
-    navigate("/quiz/2");
+    navigate(`/quiz/${id}`);
   };
 
   return (
@@ -58,6 +58,7 @@ function Instructions({ closeModal, isModal }) {
               I agree to terms and conditions
             </label>
             <button
+              className="start-btn"
               onClick={() => handleButtonClick()}
               disabled={!buttonEnable}
             >
