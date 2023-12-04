@@ -5,7 +5,7 @@ import "./Timer.css";
 import { Button } from "@mui/material";
 function Timer({ HandleTime }) {
   const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(1);
+  const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(7);
   const [isRunning, setIsRunning] = useState(false);
   const navigate = useNavigate();

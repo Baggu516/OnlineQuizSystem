@@ -4,7 +4,11 @@ import AuthContext from "../context/AuthContext";
 
 const RedirectRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
-  return user ? <Navigate to="/" /> : children;
+  return (
+    <div>
+{ user ? <Navigate to="/" /> : children}
+    </div>
+   )
 };
 
 export default RedirectRoute;

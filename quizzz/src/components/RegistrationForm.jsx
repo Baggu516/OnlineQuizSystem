@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import "./LoginForm.css"; // Import the CSS file for styling
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from "axios"
 const RegistrationForm = () => {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     let user = {};
     user["username"] = event.target.username.value;
     user["email"] = event.target.email.value;
     user["phone"] = event.target.phone.value;
     user["password"] = event.target.password.value;
+    console.log(user,"userrrrr")
+    let res=await axios.post("http://localhost:5000/user/register",user)
+    console.log(res.data,"res",event.target.username)
     let users = localStorage.getItem("users")
       ? JSON.parse(localStorage.getItem("users"))
       : [];
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
-    alert("You have successfully registered !! Now Login to app!");
-    navigate("/login");
+    // alert(res.data.msg);
+    // if(res.data.msg=="register successfully"){
+      navigate("/login");
+    // }
+    // if(res.data.token)
+   
   };
 
   return (

@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import "./LoginForm.css"; // Import the CSS file for styling
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-
-const LoginForm = () => {
+import axios from "axios";
+const LoginForm = async() => {
   const { setUser } = useContext(AuthContext);
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     // You can add your authentication logic here
     const users = localStorage.getItem("users")
@@ -23,6 +23,19 @@ const LoginForm = () => {
       }
     }
     alert("Invalid login details");
+    // try {
+    //   let details={}
+    //   details["username"]=event.target.username.value;
+    //   details["password"]=event.target.password.value;
+    //   let res = await axios.post("http://localhost:5000/user/login",details)
+    //   console.log(res.data,"res")
+    //   setUser(res.data.token)
+      
+    // } catch (error) {
+    //   console.log("errrrrrrrrrrrrrrrrrrrrrr")
+    // }
+   
+
   };
 
   return (
