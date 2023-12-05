@@ -39,16 +39,28 @@ const Register=async(req,res)=>{
 const Login=async(req,res)=>{
     try {
         let {username,password}=req.body
-        let user=await RegisterModal.findOne({username})
+        let user=await RegisterModal.find({username:username})
         console.log("email",user)
-        console.log(await bcrypt.compare(password,user.password),"paswwordddddd")
-        if(user && (await bcrypt.compare(password,user.password))){
-            // res.send({msg:"Logged In",token:generateJwt(user._id)})
-            // res.send(user)
-            res.send({msg:"login sucessfully",token:generateJwt(user._id)})
-        }else{
-            res.send({msg:"Enter Valid and password"})
+        console.log(await bcrypt.compare(user[0].password,password),"paswwordddddd")
+        if(user[0].username=="bhargav123"){  //pass-4321
+            if(user && (await bcrypt.compare(password,user[0].password))){
+                // res.send({msg:"Logged In",token:generateJwt(user._id)})
+                // res.send(user)
+                res.send({msg:"login sucessfully",token:generateJwt(user._id),username:username,role:"admin"})
+            }else{
+                res.send({msg:"Enter Valid and password"})
+            }
         }
+        else{
+            if(user && (await bcrypt.compare(password,user[0].password))){
+                // res.send({msg:"Logged In",token:generateJwt(user._id)})
+                // res.send(user)
+                res.send({msg:"login sucessfully",token:generateJwt(user._id),username:username,role:"user"})
+            }else{
+                res.send({msg:"Enter Valid and password"})
+            }
+        }
+    
         
     } catch (error) {
         console.log("loginerrr")

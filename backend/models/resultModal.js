@@ -1,7 +1,9 @@
 const mongoose =require("mongoose")
 const schemaa=mongoose.Schema(
-    {
-        total:String,
+    {   username:String,
+        obtainedmarks:String,
+        totalmarks:String,
+        title:String
 
     }
 )

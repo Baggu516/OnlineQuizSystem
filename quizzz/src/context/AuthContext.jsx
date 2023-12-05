@@ -6,14 +6,20 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [answerData, setAnswerData] = useState();
   const [user, setUser] = useState(null);
+  const [username,setUsername]=useState("")
+  const [title,setTitle]=useState("")
   const [id,setId]=useState()
   let ContextData = {
+    username:username,
+    setUsername:setUsername,
     user: user,
     setUser: setUser,
     answerData: answerData,
     setAnswerData: setAnswerData,
     id:id,
-    setId:setId
+    setId:setId,
+    title:title,
+    setTitle:setTitle
   };
     
   return (

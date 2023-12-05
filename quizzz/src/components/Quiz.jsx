@@ -25,7 +25,7 @@ Modal.setAppElement("#root");
 const Quiz = () => {
   // console.log("data222",Data2,Data1)
   // creating usecontext for store answer data
-  const { answerData, setAnswerData,setId } = useContext(AuthContext);
+  const { answerData, setAnswerData,setId,title,setTitle } = useContext(AuthContext);
   // ............................................
   const { id } = useParams();
   const [id1,setId1]=useState(Number(id))
@@ -329,7 +329,7 @@ const Quiz = () => {
       { ...timestore1, m1: m1, s1: s1, h1: h1 },
       "timooooooooo like worthhhhooo"
     );
-    m1 <= 3 ? setTimetoggle(false) : setTimetoggle(true);
+    m1 <3 ? setTimetoggle(false) : setTimetoggle(true);
   };
   // // storing optionstore in global state i.e.,setsetAnswerData
   // setAnswerData({ ...optionStore });
@@ -342,6 +342,14 @@ const Quiz = () => {
       updatedoptionDisableArr[disvalue] = !updatedoptionDisableArr[disvalue];
       setOptionDisableArr([...updatedoptionDisableArr]);
     }
+   
+      if(id==0){
+        setTitle("React Quiz")
+      }
+      else{
+        setTitle("Instruction Quiz")
+      }
+    
   }, [disvalue]);
 
   return (

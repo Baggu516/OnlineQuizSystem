@@ -1,0 +1,51 @@
+.results-container{
+    background-color: rgb(0, 119, 255);
+    display: flex;
+    justify-content: space-around;
+   align-items: center;
+}
+.logout-btn{
+    /* margin-right: -20rem; */
+    /* text-align: center; */
+   
+    background-color: none;  
+    background: none;
+    border: none;
+    
+}
+.logout-div{
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    margin-left: 30rem;
+    background: none;
+    
+}
+ion-icon{
+    border: none;
+  color: rgb(27, 30, 30);
+  background: none;
+}
+.results-navbar{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 3rem;
+  
+   padding: 1rem;
+}
+.result-btn{
+    background-color: none;
+    border: none;
+    font-size: larger;
+    background: none;
+    cursor: pointer;
+    color: aliceblue;
+
+}
+.result-btn:active{
+    text-decoration: underline;
+}
+hr {
+    transform: rotate(90deg);
+}

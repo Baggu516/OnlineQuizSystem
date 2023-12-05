@@ -14,6 +14,14 @@ const PracticeModal2 = ({ passingdata,HandleMod }) => {
     "B":"",
     "C":""
   })
+  // .....for storing total marks in database......... this func wrote in submit component
+  // const TestSubmit=async()=>{
+  //   try {
+  //     // await axios.post()
+  //   } catch (error) {
+      
+  //   }
+  // }
   
   useEffect(()=>{
     let gc=0

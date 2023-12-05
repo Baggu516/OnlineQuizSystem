@@ -13,16 +13,19 @@ const RegistrationForm = () => {
     user["password"] = event.target.password.value;
     console.log(user,"userrrrr")
     let res=await axios.post("http://localhost:5000/user/register",user)
-    console.log(res.data,"res",event.target.username)
-    let users = localStorage.getItem("users")
-      ? JSON.parse(localStorage.getItem("users"))
-      : [];
-    users.push(user);
-    localStorage.setItem("users", JSON.stringify(users));
+    // console.log(res.data,"res",event.target.username)
+    // let users = localStorage.getItem("users")
+    //   ? JSON.parse(localStorage.getItem("users"))
+    //   : [];
+    // users.push(user);
+    // localStorage.setItem("users", JSON.stringify(users));
     // alert(res.data.msg);
-    // if(res.data.msg=="register successfully"){
+    if(res.data.msg=="register successfully"){
       navigate("/login");
-    // }
+    }
+    else{
+      alert(res.data.msg);
+    }
     // if(res.data.token)
    
   };

@@ -15,12 +15,13 @@ import PracticeModal2 from "./components/PracticeModal2";
 // .........
 import SubmitComponent from "./components/SubmitComponent";
 import AnswersAndResponeses from "./components/AnswersAndResponeses";
-
+import Results from "./components/admins/Results";
 // ...............
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
+      {/* <Results></Results> */}
       <BrowserRouter>
         {/* <Quiz/> */}
         {/* <SubmitComponent/> */}
@@ -33,12 +34,22 @@ function App() {
               </PrivateRoute>
             }
           />
+              <Route
+            path="/resultspage"
+            element={
+              <PrivateRoute>
+                <Results />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="login"
             element={
               <RedirectRoute>
-                <LoginForm />
+                   <LoginForm />
               </RedirectRoute>
+                
+              
             }
           />
           <Route

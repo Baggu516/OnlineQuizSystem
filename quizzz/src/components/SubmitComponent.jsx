@@ -3,13 +3,28 @@ import Data1 from "../Static-Data/Data";
 import "./SubmitComponent.css";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import axios from "axios";
 const SubmitComponent = () => {
   // const loc = useLocation();
   // console.log("loccccation", loc.state);
   const [obtainedMarks, setObtainedMarks] = useState(0);
   const [totalMarks, setTotalMarks] = useState(0);
-  const { answerData,id } = useContext(AuthContext);
+  const { answerData,id,user,username,title } = useContext(AuthContext);
   console.log("answerData", answerData);
+  const TestSubmit=async(x)=>{
+    console.log("xxxxxx",x)
+    try {
+      let t= await axios.post("http://localhost:5000/result/",x, {
+        headers: {
+            'authorization': `Bearer ${user}`
+        }
+        
+    })
+    console.log(t,"token respone")
+    } catch (error) {
+      console.log("tokennn errrrrrrerrrrrrr")
+    }
+  }
   useEffect(() => {
     let c = 0;
     let c1 = 0;
@@ -25,7 +40,9 @@ const SubmitComponent = () => {
     });
     setTotalMarks(c1);
     setObtainedMarks(c);
-  });
+    console.log("front",title)
+    TestSubmit({username,obtainedmarks:c,totalmarks:c1,title})//for storing total marks in database
+  },[]);
   return (
     <div className="submit-container">
       <div className="total-marks-container">

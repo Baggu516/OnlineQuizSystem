@@ -20,7 +20,7 @@ const protect=async(req,res,next)=>{
         }
     }
     else{
-        res.send("dfghjkl")
+        res.send("Not Authorized")
     }
 
 

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 const Index = () => {
   const {setUser}=useContext(AuthContext)
+
   return (
     <div className="zoom-in">
       <nav>
@@ -18,7 +19,9 @@ const Index = () => {
         
         <div className="index-logout">
           <h2>Logout</h2>
-          <button onClick={()=>setUser(null)}><ion-icon name="log-out-outline"  size="small"></ion-icon></button>
+          <button onClick={()=>{
+            localStorage.removeItem("token")
+            setUser(null)}}><ion-icon name="log-out-outline"  size="small"></ion-icon></button>
         </div>
       </nav>
       <div className="card-container1">
