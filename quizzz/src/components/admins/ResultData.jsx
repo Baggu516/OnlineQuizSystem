@@ -1,8 +1,35 @@
 import React, { useState,useEffect } from 'react'
 import "./ResultData.css"
+import Editpopup from './Editpopup';
+import Deletepop from './Deletepop';
+import Modal from 'react-modal';
+Modal.setAppElement('#root');
 const ResultData = ({totalinfo,index}) => {
   const [fetcheddata,setFecteddata]=useState([])
+  const [edit,setEdit]=useState(false)
+  const [close,setClose]=useState(false)
+  const [refIndex,setRefIndex]=useState(0)
+  // .........modal style.
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width:"26rem",
+      height:"18rem",
+    
+    },
+    overlay:{
+      backgroundColor:"grey",
+      
+    }
+  };
+  // .......................
   useEffect(()=>{
+    console.log("useeffect")
     if(index==0){
      let t= totalinfo&&totalinfo.filter((item)=>item.title=="React Quiz")
      setFecteddata(t)
@@ -12,8 +39,8 @@ const ResultData = ({totalinfo,index}) => {
       setFecteddata(t)
     }
     
-  },[index])
-  console.log(fetcheddata,"fetcheddata")
+  },[totalinfo,index])
+  console.log(fetcheddata,"fetcheddata",totalinfo)
   return (
     <div>
       <table>
@@ -33,8 +60,12 @@ const ResultData = ({totalinfo,index}) => {
              90
             </td>
             <td className='operation-btns'>
-              <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={()=>{
+                setEdit(true)
+                setRefIndex(i)}}>Edit</button>
+              <button onClick={()=>{
+                setRefIndex(i)
+                setClose(true)}}>Delete</button>
             </td>
           </tr>}
          
@@ -43,6 +74,13 @@ const ResultData = ({totalinfo,index}) => {
         )
       })}
       </table>
+      <Modal isOpen={edit} onRequestClose={()=>setEdit(false)} shouldCloseOnOverlayClick={false} style={customStyles}>
+      <Editpopup onClose={()=>setEdit(false)} fetcheddata={fetcheddata} refIndex={refIndex}/>
+      </Modal>
+      <Modal isOpen={close} onRequestClose={()=>setClose(false)} shouldCloseOnOverlayClick={false} style={customStyles}>
+      <Deletepop onClose={()=>setClose(false)} fetcheddata={fetcheddata} refIndex={refIndex}/>
+      </Modal>
+     
     </div>
   )
 }

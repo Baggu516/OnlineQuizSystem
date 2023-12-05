@@ -1,0 +1,10 @@
+.delete-modal{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.content{
+    margin-left: 2rem;
+    text-align: center;
+}

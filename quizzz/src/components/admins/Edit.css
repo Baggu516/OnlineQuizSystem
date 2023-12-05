@@ -1,0 +1,24 @@
+
+.head{
+   display: flex;
+   justify-content:flex-start;
+   align-items: center;
+   gap: 15rem;
+}
+.inpt1{
+    margin-left: 5rem;
+}
+.inpt2{
+    margin-left: 2.04rem;
+}
+form div{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.edit-actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10rem;
+    margin-top: 3rem;
+}

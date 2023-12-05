@@ -6,7 +6,7 @@ import ResultData from "./ResultData";
 import axios from "axios";
 const Results = () => {
   const {setUser,user}=useContext(AuthContext)
-        const [totalinfo,setTotalInfo]=useState()
+        const [totalinfo,setTotalInfo]=useState([])
         const [filteredData,setFilteredData]=useState()
         const [index,setIndex]=useState(0)
     const Handlefetch=async()=>{

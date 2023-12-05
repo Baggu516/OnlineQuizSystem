@@ -36,7 +36,42 @@ const getTotalData=async(req,res)=>{
     }
     
 }
-
+// .......upadting
+const HandleUpdate=async(req,res)=>{
+    try {
+        console.log("upadated data",req.body)
+        let {_id,username, obtainedmarks, totalmarks,title}=req.body
+        let exist=await TotalModal.findByIdAndUpdate(_id,{username, obtainedmarks, totalmarks,title},{ new: true })
+        // await exist.save()
+        console.log(exist,"exist")
+        if(!exist){
+            res.send({msg:"not updated"})
+        }
+        res.send(exist)
+        
+    } catch (error) {
+        console.log("errr in updation")
+    }
+}
+// .......deleting the item.................
+const handleDelete=async(req,res)=>{
+    try {
+        let {_id}=req.body
+        console.log(req.body,"req.body")
+        let t=await TotalModal.findByIdAndDelete(_id) 
+        console.log(t,"ttttttttt")
+        if(!t){
+            res.send("not delete")
+            console.log("not deleted")
+        }
+        else{
+            res.send("deleted")
+            console.log("deleted")
+        }
+    } catch (error) {
+        console.log("deleted func")
+    }
+}
 
 
 
@@ -57,4 +92,4 @@ const getTotalData=async(req,res)=>{
 // }
 
 
-module.exports={results,getTotalData}
+module.exports={results,getTotalData,HandleUpdate,handleDelete}
