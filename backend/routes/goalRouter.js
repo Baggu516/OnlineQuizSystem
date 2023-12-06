@@ -5,6 +5,6 @@ const Auth =require("../middlewares/Auth")
  router.post("/",Auth,results)
  router.get("/gettotaldata",Auth,getTotalData)
  router.put("/update",Auth,HandleUpdate)
- router.delete("/delete",handleDelete)
+ router.delete("/delete",Auth,handleDelete)
  
  module.exports=router

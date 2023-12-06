@@ -3,7 +3,7 @@ import "./Edit.css"
 import axios from 'axios';
 import { Button, Divider } from '@mui/material';
 import AuthContext from '../../context/AuthContext';
-const Editpopup = ({onClose,fetcheddata,refIndex}) => {
+const Editpopup = ({onClose,fetcheddata,refIndex, setTotalInfo}) => {
     let {user}=useContext(AuthContext)
     const [u,setU]=useState(fetcheddata[refIndex].username)
     const [o,setO]=useState(fetcheddata[refIndex].obtainedmarks)
@@ -17,6 +17,7 @@ const HandleEdit=async()=>{
             
         }) 
         console.log(t.data)
+        setTotalInfo(t.data)
     } catch (error) {
         console.log("front err during updation")
     }

@@ -4,7 +4,7 @@ import "./Delete.css";
 import axios from "axios";
 import { Button, Divider } from '@mui/material';
 import AuthContext from '../../context/AuthContext';
-const Deletepop = ({onClose,fetcheddata,refIndex}) => {
+const Deletepop = ({onClose,fetcheddata,refIndex,  setTotalInfo}) => {
     let {user}=useContext(AuthContext)
     console.log(user,"userrrrrrrrrr")
     const HandleDelete=async()=>{
@@ -14,7 +14,8 @@ const Deletepop = ({onClose,fetcheddata,refIndex}) => {
                     'authorization': `Bearer ${user}`
                 }
             })
-            console.log(t.data)
+            console.log(t.data,"fghjkljhgfddfghj")
+            setTotalInfo([...t.data])
         } catch (error) {
             
         }

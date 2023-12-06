@@ -47,7 +47,7 @@ const Results = () => {
       </div>
       
     </div>
-    <ResultData totalinfo={totalinfo} index={index}/>
+    <ResultData totalinfo={totalinfo} index={index} setTotalInfo={setTotalInfo}/>
     
     </>
   );

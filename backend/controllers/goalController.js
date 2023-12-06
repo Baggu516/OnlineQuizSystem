@@ -47,7 +47,10 @@ const HandleUpdate=async(req,res)=>{
         if(!exist){
             res.send({msg:"not updated"})
         }
-        res.send(exist)
+        else{
+            res.send(await TotalModal.find({}))
+        }
+       
         
     } catch (error) {
         console.log("errr in updation")
@@ -58,14 +61,14 @@ const handleDelete=async(req,res)=>{
     try {
         let {_id}=req.body
         console.log(req.body,"req.body")
-        let t=await TotalModal.findByIdAndDelete(_id) 
+        let t=await TotalModal.findByIdAndDelete(req.body._id) 
         console.log(t,"ttttttttt")
         if(!t){
             res.send("not delete")
             console.log("not deleted")
         }
         else{
-            res.send("deleted")
+            res.send(await TotalModal.find({}))
             console.log("deleted")
         }
     } catch (error) {
