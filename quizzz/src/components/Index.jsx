@@ -2,11 +2,16 @@ import React from "react";
 import IndexpageCard from "./IndexpageCard";
 import "./Index.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 const Index = () => {
   const {setUser}=useContext(AuthContext)
-
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+      setUser(localStorage.getItem("token"))
+    }
+    console.log("login useffect")
+  },[])
   return (
     <div className="zoom-in">
       <nav>

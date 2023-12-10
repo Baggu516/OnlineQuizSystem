@@ -5,25 +5,25 @@ import AuthContext from "../context/AuthContext";
 import axios from "axios";
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { setUser,setUsername,username } = useContext(AuthContext);
+  const { setUser,setUsername,username,user } = useContext(AuthContext);
   const handleSubmit = async(event) => {
     event.preventDefault();
-    // You can add your authentication logic here
-    // const users = localStorage.getItem("users")
-    //   ? JSON.parse(localStorage.getItem("users"))
-    //   : null;
-    // console.log("users", users);
-    // if (users) {
-    //   const user = users.find(
-    //     (person) => person.username === event.target.username.value
-    //   );
-    //   console.log("user", user);
-    //   if (user && user.password === event.target.password.value) {
-    //     setUser(user);
-    //     return;
-    //   }
-    // }
-    // alert("Invalid login details");
+   /* You can add your authentication logic here
+    const users = localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : null;
+    console.log("users", users);
+    if (users) {
+      const user = users.find(
+        (person) => person.username === event.target.username.value
+      );
+      console.log("user", user);
+      if (user && user.password === event.target.password.value) {
+        setUser(user);
+        return;
+      }
+    }
+    alert("Invalid login details");*/
     try {
       let details={}
       details["username"]=event.target.username.value;
@@ -55,6 +55,7 @@ const LoginForm = () => {
     if(localStorage.getItem("token")){
       setUser(localStorage.getItem("token"))
     }
+    console.log("login useffect")
   },[])
 
   return (

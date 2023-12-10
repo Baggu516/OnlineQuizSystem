@@ -3,7 +3,7 @@ const bcrypt=require("bcryptjs")
 const jwt=require("jsonwebtoken")
 
 const RegisterModal =require("../models/register")
-const LoginModal =require("../models/login")
+// const LoginModal =require("../models/login")
 const Register=async(req,res)=>{
     try {
         let {username,email,password,phone}=req.body

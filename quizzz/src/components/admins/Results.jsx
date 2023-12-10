@@ -4,7 +4,9 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import ResultData from "./ResultData";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Results = () => {
+  let navigate=useNavigate()
   const {setUser,user}=useContext(AuthContext)
         const [totalinfo,setTotalInfo]=useState([])
         const [filteredData,setFilteredData]=useState()
@@ -28,6 +30,9 @@ const Results = () => {
     }
     useEffect(()=>{
        Handlefetch()
+       if(user){
+        navigate("/resultspage")
+       }
 
     },[])
   return (
@@ -36,7 +41,7 @@ const Results = () => {
     <div className="results-navbar">
         <button className="result-btn" onClick={()=>setIndex(0)}>React Quiz Results</button>
         <hr  style={{width:"1rem"}}/>
-        <button className="result-btn" onClick={()=>setIndex(1)}>React Quiz Results</button>
+        <button className="result-btn" onClick={()=>setIndex(1)}>Instruction Quiz Results</button>
 
       </div> 
       <div className="logout-div">

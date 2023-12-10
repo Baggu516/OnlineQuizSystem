@@ -71,7 +71,7 @@ const AnswersAndResponeses = () => {
                     <p>{`c.) ${item2["c"]}`}</p>
                   )}
                   {/* <p>{`c.) ${item2["c"]}`}</p> */}
-                  <Divider />
+                  {/* <Divider /> */}
                   <p className="answer">
                     {" "}
                     Answer : <b>{item2["solution"]}</b>

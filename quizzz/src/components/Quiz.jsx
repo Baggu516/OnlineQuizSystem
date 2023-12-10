@@ -22,6 +22,14 @@ import PracticeModal2 from "./PracticeModal2";
 import AuthContext from "../context/AuthContext";
 const arr = [false, false, false];
 Modal.setAppElement("#root");
+// ....modal style...
+const customStyles = {
+
+  overlay: {
+    backgroundColor: "grey",
+  },
+};
+// ...............
 const Quiz = () => {
   // console.log("data222",Data2,Data1)
   // creating usecontext for store answer data
@@ -188,11 +196,12 @@ const Quiz = () => {
       setS("C");
       setN(0);
       setSecDisable(["white", "white", "black"]);
-      setGoNextText("Save & Submit");
+      setGoNextText("Save & Next");
     } else {
-      setS("B")
-      setN(0);
-      setSecDisable([ "white","black", "white"]);
+      // setS("B")
+      // setN(0);
+      // setSecDisable([ "white","black", "white"]);
+      handleSecB()
 
     }
   };
@@ -519,7 +528,7 @@ const Quiz = () => {
         <Modal isOpen={modalOpen}>
           <Instructions closeModal={closeModal} isModal={true} />
         </Modal>
-        <Modal ariaHideApp={true} isOpen={mod}>
+        <Modal ariaHideApp={true} isOpen={mod}  style={customStyles} >
           <PracticeModal2 passingdata={optionStore} HandleMod={HandleMod} />
           {/* <h1>hello</h1> */}
           {/* <Instructions closeModal={closeModal} isModal={false} /> */}

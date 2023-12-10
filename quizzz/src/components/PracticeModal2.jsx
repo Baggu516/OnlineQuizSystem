@@ -4,6 +4,12 @@ import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import Data1 from "../Static-Data/Data";
 import AuthContext from "../context/AuthContext";
+const customStyles = {
+ 
+  overlay: {
+    backgroundColor: "grey",
+  },
+};
 const PracticeModal2 = ({ passingdata,HandleMod }) => {
   const {id,answerData}=useContext(AuthContext)
   const [answers, setAnswers] = useState({ ...answerData });
