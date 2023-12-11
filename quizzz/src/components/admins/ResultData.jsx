@@ -54,7 +54,7 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
             <>
               <tr>
                 <td>{item.username}</td>
-                <td>90</td>
+                <td>{item.obtainedmarks}</td>
                 <td className="operation-btns">
                   <button
                     onClick={() => {

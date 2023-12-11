@@ -35,10 +35,10 @@ ion-icon {
 .start-btn{
     width: 150px;
     border: none;
-    background-color: rgb(0, 217, 255);
+    background-color: rgb(197, 203, 204);
     border-radius: 10px;
     padding: 4px;
     margin: 10px;
-    color:black;
+    /* color:black; */
     font-weight: 600;
 }

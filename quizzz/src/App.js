@@ -45,9 +45,9 @@ function App() {
           <Route
             path="login"
             element={
-              // <RedirectRoute>
+              <RedirectRoute>
                    <LoginForm />
-              // {/* </RedirectRoute> */}
+              </RedirectRoute>
                 
               
             }

@@ -52,9 +52,11 @@ const LoginForm = () => {
   };
   console.log("outer  usernamerrrrrr",username)
   useEffect(()=>{
-    if(localStorage.getItem("token")){
-      setUser(localStorage.getItem("token"))
-    }
+    // alert("tokennnn")
+    // if(localStorage.getItem("token")){
+      
+    //   setUser(localStorage.getItem("token"))
+    // }
     console.log("login useffect")
   },[])
 
