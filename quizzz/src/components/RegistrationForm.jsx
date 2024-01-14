@@ -20,6 +20,7 @@ const RegistrationForm = () => {
     // users.push(user);
     // localStorage.setItem("users", JSON.stringify(users));
     // alert(res.data.msg);
+    console.log(res.data)
     if(res.data.msg=="register successfully"){
       alert("Registered succssfully")
       navigate("/login");

@@ -68,10 +68,20 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="submit" element={<SubmitComponent />} />
-          <Route path="answers" element={<AnswersAndResponeses />} />
-          <Route path="quiz/:id" element={<Quiz />} />
-          <Route path="modal2" element={<PracticeModal2 />} />
+          <Route path="submit" element={
+             <PrivateRoute>
+                  <SubmitComponent />
+             </PrivateRoute>
+         } />
+          <Route path="answers" element={<PrivateRoute>
+            <AnswersAndResponeses />
+          </PrivateRoute>} />
+          <Route path="quiz/:id" element={<PrivateRoute>
+            <Quiz />
+          </PrivateRoute>} />
+          <Route path="modal2" element={<PrivateRoute>
+            <PracticeModal2 />
+          </PrivateRoute>} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
