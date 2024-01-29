@@ -4,7 +4,7 @@ import "./Delete.css";
 import axios from "axios";
 import { Button, Divider } from '@mui/material';
 import AuthContext from '../../context/AuthContext';
-const Deletepop = ({onClose,fetcheddata,refIndex,  setTotalInfo}) => {
+const Deletepop = ({onClose,fetcheddata,refIndex,  setTotalInfo,Handlefetch}) => {
     let {user}=useContext(AuthContext)
     console.log(user,"userrrrrrrrrr")
     const HandleDelete=async()=>{
@@ -19,7 +19,7 @@ const Deletepop = ({onClose,fetcheddata,refIndex,  setTotalInfo}) => {
         } catch (error) {
             
         }
-        
+       Handlefetch() 
       onClose()
     }
   return (

@@ -3,7 +3,10 @@ const schemaa=mongoose.Schema(
     {   username:String,
         obtainedmarks:String,
         totalmarks:String,
-        title:String
+        title:{
+           type: String,
+           unique: true
+        }
 
     }
 )

@@ -24,7 +24,7 @@ const Index = () => {
         
         <div className="index-logout">
           <h2>Logout</h2>
-          <button onClick={()=>{
+          <button className="log" onClick={()=>{
             localStorage.removeItem("token")
             setUser(null)}}><ion-icon name="log-out-outline"  size="small"></ion-icon></button>
         </div>

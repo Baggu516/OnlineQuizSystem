@@ -42,7 +42,7 @@ const Login=async(req,res)=>{
         let user=await RegisterModal.find({username:username})
         console.log("email",user)
         console.log(await bcrypt.compare(user[0].password,password),"paswwordddddd")
-        if(user[0].username=="bhargav123"){  //pass-4321
+        if(user[0].username=="sharath"){  //pass-4321
             if(user && (await bcrypt.compare(password,user[0].password))){
                 // res.send({msg:"Logged In",token:generateJwt(user._id)})
                 // res.send(user)

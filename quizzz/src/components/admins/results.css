@@ -10,21 +10,31 @@
    
     background-color: none;  
     background: none;
+    /* border: 5px solid rgb(239, 10, 10); */
+    /* border-radius: 50%; */
+    margin-left: 10px;
     border: none;
+    /* background-color: blue; */
     
 }
 .logout-div{
     display: flex;
     align-items: center;
-    color: aliceblue;
+    /* color: aliceblue; */
     margin-left: 30rem;
     background: none;
     
 }
 ion-icon{
     border: none;
-  color: rgb(27, 30, 30);
+  color: rgb(14, 18, 18);
   background: none;
+  width: 50px;
+  height: 30px;
+  /* margin: 10px; */
+  background: none;
+  background-color:none;
+  padding: 0;
 }
 .results-navbar{
    display: flex;
@@ -43,9 +53,13 @@ ion-icon{
     color: aliceblue;
 
 }
-.result-btn:active{
+.act{
     text-decoration: underline;
 }
 hr {
     transform: rotate(90deg);
+}
+button.active {
+    background-color: #4CAF50;
+    color: white;
 }

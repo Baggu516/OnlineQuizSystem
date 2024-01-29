@@ -4,7 +4,7 @@ import Editpopup from "./Editpopup";
 import Deletepop from "./Deletepop";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
-const ResultData = ({ totalinfo, index, setTotalInfo }) => {
+const ResultData = ({ totalinfo, index, setTotalInfo,Handlefetch }) => {
   const [fetcheddata, setFecteddata] = useState([]);
   const [edit, setEdit] = useState(false);
   const [close, setClose] = useState(false);
@@ -36,13 +36,15 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
       let t =
         totalinfo &&
         totalinfo.filter((item) => item.title == "Instruction Quiz");
+        
       setFecteddata(t);
     }
   }, [totalinfo, index]);
   console.log(fetcheddata, "fetcheddata", totalinfo);
   return (
-    <div>
+    <>
       <table>
+        <tbody>
         <tr>
           <th>Username</th>
           <th>{`Total Marks(out off ${totalinfo[0]?.totalmarks})`}</th>
@@ -51,8 +53,8 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
         {fetcheddata.length!=0?
            fetcheddata.map((item, i) => {
           return (
-            <>
-              <tr>
+            
+              <tr key={i}>
                 <td>{item.username}</td>
                 <td>{item.obtainedmarks}</td>
                 <td className="operation-btns">
@@ -74,9 +76,10 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
                   </button>
                 </td>
               </tr>
-            </>
+            
           );
-        }):<><p>No results yet</p></>}
+        }):null}
+        </tbody>
       </table>
       <Modal
         isOpen={edit}
@@ -89,6 +92,7 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
           fetcheddata={fetcheddata}
           refIndex={refIndex}
           setTotalInfo={setTotalInfo}
+          Handlefetch={Handlefetch}
         />
       </Modal>
       <Modal
@@ -102,9 +106,10 @@ const ResultData = ({ totalinfo, index, setTotalInfo }) => {
           fetcheddata={fetcheddata}
           refIndex={refIndex}
           setTotalInfo={setTotalInfo}
+          Handlefetch={Handlefetch}
         />
       </Modal>
-    </div>
+    </>
   );
 };
 

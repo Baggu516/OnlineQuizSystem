@@ -44,6 +44,8 @@ nav{
     align-items: center;
     justify-content: space-around;
     gap:5px;
+    color: black;
+    /* background-color: black; */
 }
 
 .quiz-text{
@@ -72,4 +74,16 @@ nav{
   }
 .zoom-in.active {
     transform: scale(1);
+  }
+  .log{
+    /* background-color: black;   */
+    /* background: ; */
+    /* border: 5px solid rgb(239, 10, 10); */
+    /* border-radius: 50%; */
+    margin-left: 10px;
+    border: none;
+    color: black;
+    border-radius: 50%;
+    padding: 3px;
+
   }

@@ -12,7 +12,7 @@ const SubmitComponent = () => {
   const { answerData,id,user,username,title } = useContext(AuthContext);
   console.log("answerData", answerData);
   const TestSubmit=async(x)=>{
-    console.log("xxxxxx",x)
+    console.log("xxxxxxeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxx",x)
     try {
       let t= await axios.post("http://localhost:5000/result/",x, {
         headers: {
@@ -22,7 +22,9 @@ const SubmitComponent = () => {
     })
     console.log(t,"token respone")
     } catch (error) {
+
       console.log("tokennn errrrrrrerrrrrrr")
+
     }
   }
   useEffect(() => {
@@ -38,10 +40,11 @@ const SubmitComponent = () => {
         }
       });
     });
+    TestSubmit({username,obtainedmarks:c,totalmarks:c1,title})//for storing total marks in database
     setTotalMarks(c1);
     setObtainedMarks(c);
     console.log("front",title)
-    TestSubmit({username,obtainedmarks:c,totalmarks:c1,title})//for storing total marks in database
+    
   },[]);
   return (
     <div className="submit-container">

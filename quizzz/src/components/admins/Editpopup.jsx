@@ -3,7 +3,7 @@ import "./Edit.css";
 import axios from "axios";
 import { Button, Divider } from "@mui/material";
 import AuthContext from "../../context/AuthContext";
-const Editpopup = ({ onClose, fetcheddata, refIndex, setTotalInfo }) => {
+const Editpopup = ({ onClose, fetcheddata, refIndex, setTotalInfo,Handlefetch }) => {
   let { user } = useContext(AuthContext);
   const [u, setU] = useState(fetcheddata[refIndex].username);
   const [o, setO] = useState(fetcheddata[refIndex].obtainedmarks);
@@ -24,6 +24,7 @@ const Editpopup = ({ onClose, fetcheddata, refIndex, setTotalInfo }) => {
     } catch (error) {
       console.log("front err during updation");
     }
+    Handlefetch()
     onClose();
   };
 
@@ -31,7 +32,7 @@ const Editpopup = ({ onClose, fetcheddata, refIndex, setTotalInfo }) => {
     <div className="editcomponent">
       <div className="head">
         <h1>Details</h1>
-        <button onClick={onClose}>X</button>
+        <button className="close-btn" onClick={onClose}>X</button>
       </div>
       {/* <Divider/> */}
       <form>

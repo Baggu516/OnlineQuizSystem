@@ -22,3 +22,9 @@ form div{
     gap:10rem;
     margin-top: 3rem;
 }
+.close-btn{
+    padding: 10px;
+    font-weight:700 ;
+    width: 50px;
+    height: 40px;
+}

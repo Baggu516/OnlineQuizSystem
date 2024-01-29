@@ -5,9 +5,9 @@ const results=async(req,res)=>{
     try {
         let{username,obtainedmarks,totalmarks,title}=req.body
         console.log(title,"title")
-        let exist =await TotalModal.find({username,title})
+        let exist =await TotalModal.findOne({username,title})
         console.log(exist,"totalmodal")
-        if(exist.length!=0){
+        if(exist!=null){
             res.send("user exist or username is empty")
             console.log("user exist or username is empty")
         }
@@ -15,7 +15,9 @@ const results=async(req,res)=>{
             console.log(username)
             let t=await TotalModal.create(req.body)
             if(t){
-                res.send("succesful")
+            
+                res.send("succesfully")
+
             }
            
         }
